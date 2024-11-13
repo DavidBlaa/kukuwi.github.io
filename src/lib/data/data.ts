@@ -1,10 +1,10 @@
-import type { instrumentCardType } from '$lib/types/types';
+import type { instrumentCardType, Level_Guessing } from '$lib/types/types';
 
 export const instruments: instrumentCardType[] = [
 	{
 		id: 1,
 		name: 'Schlagzeug',
-		image: 'instrumente/icons8-drums-100.png',
+		image: '001-schlagzeug.png',
 		audios: [
 			'Drums - Funk 111 bpm.mp3',
 			'Drums - Funk 112 bpm.mp3',
@@ -17,7 +17,7 @@ export const instruments: instrumentCardType[] = [
 	{
 		id: 2,
 		name: 'Gitarre',
-		image: 'instrumente/icons8-ukelele-100.png',
+		image: '002-spanische-gitarre.png',
 		audios: [
 			'Gt1 AfricanFunk Gm 120bpm.mp3',
 			'Gt1 Alternative Em 120bpm.mp3',
@@ -30,7 +30,7 @@ export const instruments: instrumentCardType[] = [
 	{
 		id: 3,
 		name: 'Bass',
-		image: 'instrumente/icons8-bass-guitar-100.png',
+		image: '003-elektrische-gitarre.png',
 		audios: [
 			'Bs1 AfricanFunk Gm 120bpm.mp3',
 			'Bs1 Alternative Em 120bpm.mp3',
@@ -49,7 +49,7 @@ export const instruments: instrumentCardType[] = [
 	{
 		id: 5,
 		name: 'Piano',
-		image: 'instrumente/icons8-piano-100.png',
+		image: '004-elektrisches-klavier.png',
 		audios: [
 			'Piano Grand Piano Dirty Stabs E Minor 90 bpm.mp3',
 			'Piano Ostinato Focus F Dorian 85 bpm.mp3',
@@ -62,7 +62,7 @@ export const instruments: instrumentCardType[] = [
 	{
 		id: 6,
 		name: 'Trompete',
-		image: 'instrumente/icons8-trumpet-100.png',
+		image: '006-trompete.png',
 		audios: [
 			'Trumpet 87bpm G minor.mp3',
 			'Trumpet 105bpm D minor.mp3',
@@ -73,19 +73,19 @@ export const instruments: instrumentCardType[] = [
 	{
 		id: 7,
 		name: 'Violine',
-		image: 'instrumente/icons8-violin-100.png',
+		image: '007-violine.png',
 		audios: ['Violine 1.mp3']
 	},
 	{
 		id: 8,
 		name: 'Saxophone',
-		image: 'instrumente/icons8-saxophone-100.png',
+		image: '008-saxophon.png',
 		audios: ['Sax 60bpm E minor.mp3']
 	},
 	{
 		id: 9,
 		name: 'Mikrophone',
-		image: 'instrumente/icons8-microphone-100.png',
+		image: '009-karaoke.png',
 		audios: [
 			'Vocal Beatbox Quasheesh.mp3',
 			'Vocal Demo Harmony.mp3',
@@ -96,34 +96,63 @@ export const instruments: instrumentCardType[] = [
 	{
 		id: 10,
 		name: 'Harmonium',
-		image: 'instrumente/icons8-harmonica-100.png',
+		image: 'harmonium.png',
 		audios: ['Harmonium_124bpm_E.mp3']
 	},
 	{
 		id: 11,
 		name: 'Banjo',
-		image: 'instrumente/icons8-banjo-100.png',
+		image: 'banjo.png',
 		audios: ['Banjo-exotic-loop_100bpm_B_minor.mp3']
 	},
 	{
 		id: 12,
 		name: 'Flöte',
-		image: 'instrumente/icons8-flute-100.png',
+		image: 'flute.png',
 		audios: ['Flute-vibey_150bpm.mp3']
 	}
 ];
 
 export const successGifs: string[] = [
-	'/images/success1.gif',
-	'/images/success2.gif',
-	'/images/success3.gif',
-	'/images/success4.gif',
-	'/images/success5.gif',
-	'/images/fail3.gif',
-	'/images/fail4.gif',
-	'/images/fail4.gif',
-	'/images/gil-cat.gif',
-	'/images/happy-snoopy.gif'
+	'success1.gif',
+	'success2.gif',
+	'success3.gif',
+	'success4.gif',
+	'success5.gif',
+	'happy-snoopy.gif',
+	'gil-cat.gif',
 ];
 
-export const failGifs: string[] = ['/images/fail1.gif'];
+export const failGifs: string[] = [
+	'fail1.gif',
+	'fail3.gif',
+	'fail4.gif',
+	'fail4.gif',
+
+
+];
+
+export const level_guessing_list:Level_Guessing[] =[
+
+	{
+		id:1,
+		instrument_ids:[1,2,3,4,5,6,7,8],
+		track_path:"Drums - Funk 112 bpm.mp3",
+		correct_id:1
+
+	}
+
+
+]
+
+export const failGifsSound:string[] = [
+	"trumpet-fail-242645.mp3",
+
+
+]
+
+export const successGifsSound:string[] = [
+	"brass-fanfare-with-timpani-and-winchimes-reverberated-146260.mp3",
+	"success-fanfare-trumpets-6185.mp3",
+
+]
