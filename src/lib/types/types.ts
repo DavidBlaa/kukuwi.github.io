@@ -5,6 +5,10 @@ export type Instrument = {
 	audios: string[];
 };
 
+export type KlangQuizInstrument = Omit<Instrument, 'audios'> & {
+	audio: string;
+};
+
 export type Game = {
 	name: string;
 	link: string;

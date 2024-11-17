@@ -1,16 +1,11 @@
 export const successGifs: string[] = [
-	'/gifs/success1.gif',
-	'/gifs/success2.gif',
-	'/gifs/success3.gif',
-	'/gifs/success4.gif',
-	'/gifs/success5.gif',
-	'/gifs/gil-cat.gif',
-	'/gifs/happy-snoopy.gif'
+	'success1.gif',
+	'success2.gif',
+	'success3.gif',
+	'success4.gif',
+	'success5.gif',
+	'gil-cat.gif',
+	'happy-snoopy.gif'
 ];
 
-export const failGifs: string[] = [
-	'/gifs/fail1.gif',
-	'/gifs/fail2.gif',
-	'/gifs/fail3.gif',
-	'/gifs/fail4.gif'
-];
+export const failGifs: string[] = ['fail1.gif', 'fail2.gif', 'fail3.gif', 'fail4.gif'];
