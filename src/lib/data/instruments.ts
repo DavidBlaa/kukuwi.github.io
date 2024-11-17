@@ -47,6 +47,12 @@ export const instruments: Instrument[] = [
 		]
 	},
 	{
+		name: 'Banjo',
+		category: 'Zupfinstrumente',
+		image: 'icons8-banjo-100.png',
+		audios: ['Banjo-exotic-loop_100bpm_B_minor.mp3']
+	},
+	{
 		name: 'Harmonium',
 		category: 'Tasteninstrumente',
 		image: '004-elektrisches-klavier.png',
@@ -64,6 +70,12 @@ export const instruments: Instrument[] = [
 			'Piano Phrase Lazy Day IV-I Ab Major 105 bpm.mp3',
 			'Piano Progression City Drive A Minor 125 bpm.mp3'
 		]
+	},
+	{
+		name: 'Harmonium',
+		category: 'Tasteninstrumente',
+		image: 'icons8-harmonica-100.png',
+		audios: ['Harmonium_124bpm_E.mp3']
 	},
 	{
 		name: 'Trompete',
@@ -91,7 +103,7 @@ export const instruments: Instrument[] = [
 	{
 		name: 'Flöte',
 		category: 'Blasinstrumente',
-		image: '',
+		image: 'flute.png',
 		audios: ['Flute-vibey_150bpm.mp3']
 	}
 ];

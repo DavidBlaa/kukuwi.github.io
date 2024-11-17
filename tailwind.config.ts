@@ -5,7 +5,11 @@ export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 
 	theme: {
-		extend: {}
+		extend: {
+			animation: {
+        'spin-slow': 'spin 3s linear infinite',
+      }
+		}
 	},
 
 	plugins: [aspectRatio]
