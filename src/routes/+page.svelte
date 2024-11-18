@@ -6,13 +6,13 @@
 	}
 
 	function goToStart(){
-		goto('/start')
+		goto('/raten')
 	}
 </script>
 
 <main>
 	<!-- Aufteilung des Bildschirms in zwei gleichgroße Hälften vertikal-->
-	<div class="flex flex-col h-screen">
+	<div class="flex flex-col h-screen bg-blue-200">
 		<!--Obere Hälfte mit dem KukuWi Logo-->
 		<div class="h-3/5 flex items-center justify-center">
 			<img src="/images/logo.png" alt="logo" class="max-w-full max-h-full object-contain">
@@ -21,7 +21,17 @@
 	    <div class="h-2/5 flex">
 	        <!--Unter Hälfte wird nochmal geteilt für Trainings- und Übungsbutton-->
 				<div class="w-1/2 flex items-center justify-center">
-					<div class="flex flex-col items-center">
+					<div class="flex flex-col items-center rounded-2xl 
+					 border-b-gray-600
+                     border-l-gray-200
+                     border-t-gray-400
+                     border-r-gray-400
+					  border-b-[20px]
+                      border-l-[10px]
+                      border-r-[10px]
+                      border-t-[10px]
+                      shadow-2xl [rotate-y-20deg]
+					  bg-gray-300">
 							<img src="/images/Hut_2.png" alt="Hut" class="w-20 h-20 object-cover">
 						<div>
 							<button class="flex items-center" on:click={goToUebung}>
@@ -31,9 +41,19 @@
 					</div>
 				</div>
 				<div class="w-1/2 flex items-center justify-center">
-					<div class="flex flex-col items-center">
+					<div class="flex flex-col items-center rounded-2xl
+						 border-b-gray-600
+                         border-l-gray-200
+                         border-t-gray-400
+                         border-r-gray-400
+					       border-b-[20px]
+                           border-l-[10px]
+                           border-r-[10px]
+                           border-t-[10px]
+                           shadow-2xl [rotate-y-20deg]
+						   bg-gray-300">
                         <div>
-							<img src="/images/Pokal.jpg" alt="Pokal" class="w-20 h-20">
+							<img src="/images/Pokal.png" alt="Pokal" class="w-20 h-20">
 						</div>
 						<div>
 							<button class="flex items-center" on:click={goToStart}>
