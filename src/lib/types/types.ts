@@ -6,6 +6,7 @@ export type Instrument = {
 };
 
 export type KlangQuizInstrument = Omit<Instrument, 'audios'> & {
+	index: number;
 	audio: string;
 };
 

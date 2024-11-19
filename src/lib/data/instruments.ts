@@ -17,13 +17,13 @@ export const instruments: Instrument[] = [
 	{
 		name: 'Banjo',
 		category: 'Zupfinstrumente',
-		image: '',
+		image: '002-banjo.png',
 		audios: ['Banjo-exotic-loop_100bpm_B_minor.mp3']
 	},
 	{
 		name: 'Gitarre',
 		category: 'Zupfinstrumente',
-		image: '002-spanische-gitarre.png',
+		image: '003-gitarre.png',
 		audios: [
 			'Gt1 AfricanFunk Gm 120bpm.mp3',
 			'Gt1 Alternative Em 120bpm.mp3',
@@ -36,7 +36,7 @@ export const instruments: Instrument[] = [
 	{
 		name: 'Bass',
 		category: 'Zupfinstrumente',
-		image: '003-elektrische-gitarre.png',
+		image: '004-elektrischer-bass.png',
 		audios: [
 			'Bs1 AfricanFunk Gm 120bpm.mp3',
 			'Bs1 Alternative Em 120bpm.mp3',
@@ -47,21 +47,15 @@ export const instruments: Instrument[] = [
 		]
 	},
 	{
-		name: 'Banjo',
-		category: 'Zupfinstrumente',
-		image: 'icons8-banjo-100.png',
-		audios: ['Banjo-exotic-loop_100bpm_B_minor.mp3']
-	},
-	{
 		name: 'Harmonium',
 		category: 'Tasteninstrumente',
-		image: '004-elektrisches-klavier.png',
+		image: '005-harmonium.png',
 		audios: ['Harmonium_124bpm_E.mp3']
 	},
 	{
 		name: 'Piano',
 		category: 'Tasteninstrumente',
-		image: '005-tastatur.png',
+		image: '006-piano.png',
 		audios: [
 			'Piano Grand Piano Dirty Stabs E Minor 90 bpm.mp3',
 			'Piano Ostinato Focus F Dorian 85 bpm.mp3',
@@ -72,15 +66,9 @@ export const instruments: Instrument[] = [
 		]
 	},
 	{
-		name: 'Harmonium',
-		category: 'Tasteninstrumente',
-		image: 'icons8-harmonica-100.png',
-		audios: ['Harmonium_124bpm_E.mp3']
-	},
-	{
 		name: 'Trompete',
 		category: 'Blasinstrumente',
-		image: '006-trompete.png',
+		image: '007-trompete.png',
 		audios: [
 			'Trumpet 87bpm G minor.mp3',
 			'Trumpet 105bpm D minor.mp3',
@@ -91,19 +79,19 @@ export const instruments: Instrument[] = [
 	{
 		name: 'Violine',
 		category: 'Streichinstrumente',
-		image: '007-violine.png',
+		image: '008-violine.png',
 		audios: ['Violine 1.mp3']
 	},
 	{
 		name: 'Saxophone',
 		category: 'Blasinstrumente',
-		image: '008-saxophon.png',
+		image: '009-saxophon.png',
 		audios: ['Sax 60bpm E minor.mp3']
 	},
 	{
 		name: 'Flöte',
 		category: 'Blasinstrumente',
-		image: 'flute.png',
+		image: '010-floete.png',
 		audios: ['Flute-vibey_150bpm.mp3']
 	}
 ];

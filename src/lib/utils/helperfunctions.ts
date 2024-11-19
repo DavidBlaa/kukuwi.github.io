@@ -23,7 +23,8 @@ export function getKlangQuizInstruments(quantity: number, sameCategory?: boolean
 
 	instruments = shuffleArray(instruments).slice(0, quantity);
 
-	return instruments.map((instrument) => ({
+	return instruments.map((instrument, index) => ({
+		index: index,
 		name: instrument.name,
 		category: instrument.category,
 		image: instrument.image,
