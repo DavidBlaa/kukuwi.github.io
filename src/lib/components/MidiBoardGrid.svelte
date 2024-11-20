@@ -1,6 +1,7 @@
 <script lang="ts">
 	import MidiButton from '$lib/components/MidiButton.svelte';
 	import type { Instrument, KlangQuizInstrument } from '$lib/types/types';
+	import { base } from '$app/paths';
 
 	interface ComponentsProps {
 		sound_level_float: number;
@@ -37,13 +38,13 @@
 >
 	{#each instruments as instrument, i}
 		<MidiButton
-			img_url={'/images/instruments/' + instrument.image}
+			img_url={base + '/images/instruments/' + instrument.image}
 			is_active={active_tile_list[i]}
 			use_audio={use_tile_sounds}
 			audio_url={use_tile_sounds
 				? 'audio' in instrument
-					? `/audios/${instrument.audio}`
-					: `/audios/${instrument.audios[0]}`
+					? `${base}/audios/${instrument.audio}`
+					: `${base}/audios/${instrument.audios[0]}`
 				: ''}
 			name={instrument.name}
 			use_header={true}

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { getRandomGIF } from '$lib/utils/helperfunctions';
+	import { base } from '$app/paths';
 
 	interface component_prop_type {
 		success: boolean;
@@ -18,15 +19,15 @@
 	let gif = getRandomGIF(success);
 
 	let sound = success
-		? '/audios/gif-sounds/success-fanfare-trumpets-6185.mp3'
-		: '/audios/gif-sounds/trumpet-fail-242645.mp3';
+		? base + '/audios/gif-sounds/success-fanfare-trumpets-6185.mp3'
+		: base + '/audios/gif-sounds/trumpet-fail-242645.mp3';
 </script>
 
 <div class="fixed bottom-0 top-0 h-screen w-screen flex-col items-center justify-start">
 	<div class="fixed bottom-0 top-0 z-50 flex h-full w-full flex-col items-center justify-start p-7">
 		<img
 			class="h-5/6 {success ? 'border-green-800' : 'border-red-600'} border-8 shadow-2xl"
-			src={'/gifs/' + gif}
+			src={base + '/gifs/' + gif}
 			alt={success ? 'Gewonnen!!!' : 'Verloren :('}
 		/>
 

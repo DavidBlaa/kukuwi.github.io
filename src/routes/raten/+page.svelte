@@ -4,6 +4,7 @@
 	import type { KlangQuizInstrument } from '$lib/types/types';
 	import { getKlangQuizInstruments, selectInstrumentToBeFound } from '$lib/utils/helperfunctions';
 	import { onMount } from 'svelte';
+	import { base } from '$app/paths';
 
 	let victory = $state(false);
 
@@ -23,7 +24,7 @@
 	let n_instruments = $derived(usedInstruments?.length);
 	const active_tile_list: boolean[] = $derived(Array(n_instruments).fill(false));
 	const pause_tile_list: boolean[] = $derived(Array(n_instruments).fill(true));
-	let track_source = $derived('/audios/' + correctInstrument?.audio);
+	let track_source = $derived(base + '/audios/' + correctInstrument?.audio);
 
 	function handle_music_tile_click(end_of_song: boolean = false, index: number): void {
 		active_tile_list[index] = !active_tile_list[index];
