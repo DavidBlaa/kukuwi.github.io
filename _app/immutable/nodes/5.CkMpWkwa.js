@@ -1,1 +1,0 @@
-import{a,t as n}from"../chunks/disclose-version.C6y0ohnU.js";import"../chunks/legacy.CzOlOoA5.js";var r=n('<main class="flex h-full items-center justify-center"><h1 class="text-6xl text-blue-500">Startseite</h1></main>');function m(t){var e=r();a(t,e)}export{m as component};
