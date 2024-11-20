@@ -1,5 +1,6 @@
 <script>
 	import { goto } from "$app/navigation";
+	import {base} from '$app/paths';
 //Für Weiterleitung auf Start- bzw. Übungsseite
 	function goToUebung(){
 		goto('/uebung') 
@@ -53,7 +54,7 @@
                            shadow-2xl [rotate-y-20deg]
 						   bg-gray-300"
 						   on:click={goToStart}>
-                           <img src="/images/Pokal.png" alt="Pokal" class="w-20 h-20">
+                           <img src=base+"/images/Pokal.png" alt="Pokal" class="w-20 h-20">
 						   <span class="text-6xl font-bold">Start</span>
 							</button>
 						
