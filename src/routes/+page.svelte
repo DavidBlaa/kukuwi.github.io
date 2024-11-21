@@ -1,12 +1,13 @@
 <script>
 	import { goto } from "$app/navigation";
+	import {base} from '$app/paths';
 //Für Weiterleitung auf Start- bzw. Übungsseite
 	function goToUebung(){
-		goto('/uebung') 
+		goto(base+'/uebung') 
 	}
 
 	function goToStart(){
-		goto('/raten')
+		goto(base+'/raten')
 	}
 </script>
 
@@ -15,7 +16,7 @@
 	<div class="flex flex-col h-screen bg-blue-200">
 		<!--Obere Hälfte mit dem KukuWi Logo-->
 		<div class="h-3/5 flex items-center justify-center">
-			<img src="/images/logo.png" alt="logo" class="max-w-full max-h-full object-contain">
+			<img src={base+"/images/logo.png"} alt="logo" class="max-w-full max-h-full object-contain">
 		</div> 
 	    <!-- Unter Hälfte mit den Buttons -->
 	    <div class="h-2/5 flex">
@@ -34,7 +35,7 @@
                       shadow-2xl [rotate-y-20deg]
 					  bg-gray-300"
 					  on:click={goToUebung}>
-					    <img src="/images/Hut_2.png" alt="Hut" class="w-20 h-20 object-cover">
+					    <img src={base+"/images/Hut_2.png"} alt="Hut" class="w-20 h-20 object-cover">
 					     <span class="text-6xl font-bold">Üben</span>
 					   </button>
 					</div>
@@ -53,7 +54,7 @@
                            shadow-2xl [rotate-y-20deg]
 						   bg-gray-300"
 						   on:click={goToStart}>
-                           <img src="/images/Pokal.png" alt="Pokal" class="w-20 h-20">
+                           <img src={base+"/images/Pokal.png"} alt="Pokal" class="w-20 h-20">
 						   <span class="text-6xl font-bold">Start</span>
 							</button>
 						
