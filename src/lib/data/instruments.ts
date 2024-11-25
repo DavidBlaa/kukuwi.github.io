@@ -4,7 +4,7 @@ export const instruments: Instrument[] = [
 	{
 		name: 'Schlagzeug',
 		category: 'Schlaginstrumente',
-		image: '001-schlagzeug.png',
+		image: 'Drum.svg',
 		audios: [
 			'Drums - Funk 111 bpm.mp3',
 			'Drums - Funk 112 bpm.mp3',
@@ -17,13 +17,13 @@ export const instruments: Instrument[] = [
 	{
 		name: 'Banjo',
 		category: 'Zupfinstrumente',
-		image: '002-banjo.png',
+		image: 'Banjo.svg',
 		audios: ['Banjo-exotic-loop_100bpm_B_minor.mp3']
 	},
 	{
 		name: 'Gitarre',
 		category: 'Zupfinstrumente',
-		image: '003-gitarre.png',
+		image: 'Guitar.svg',
 		audios: [
 			'Gt1 AfricanFunk Gm 120bpm.mp3',
 			'Gt1 Alternative Em 120bpm.mp3',
@@ -36,7 +36,7 @@ export const instruments: Instrument[] = [
 	{
 		name: 'Bass',
 		category: 'Zupfinstrumente',
-		image: '004-elektrischer-bass.png',
+		image: 'Bass.svg',
 		audios: [
 			'Bs1 AfricanFunk Gm 120bpm.mp3',
 			'Bs1 Alternative Em 120bpm.mp3',
@@ -46,7 +46,7 @@ export const instruments: Instrument[] = [
 			'Bs1 Punk Emaj 170bpm.mp3'
 		]
 	},
-	{
+	/*{
 		name: 'Harmonium',
 		category: 'Tasteninstrumente',
 		image: '005-harmonium.png',
@@ -64,11 +64,11 @@ export const instruments: Instrument[] = [
 			'Piano Phrase Lazy Day IV-I Ab Major 105 bpm.mp3',
 			'Piano Progression City Drive A Minor 125 bpm.mp3'
 		]
-	},
+	},*/
 	{
 		name: 'Trompete',
 		category: 'Blasinstrumente',
-		image: '007-trompete.png',
+		image: 'Trombone.svg',
 		audios: [
 			'Trumpet 87bpm G minor.mp3',
 			'Trumpet 105bpm D minor.mp3',
@@ -79,19 +79,19 @@ export const instruments: Instrument[] = [
 	{
 		name: 'Violine',
 		category: 'Streichinstrumente',
-		image: '008-violine.png',
+		image: 'Violin.svg',
 		audios: ['Violine 1.mp3']
 	},
 	{
 		name: 'Saxophone',
 		category: 'Blasinstrumente',
-		image: '009-saxophon.png',
+		image: 'Saxophone.svg',
 		audios: ['Sax 60bpm E minor.mp3']
 	},
 	{
 		name: 'Flöte',
 		category: 'Blasinstrumente',
-		image: '010-floete.png',
+		image: 'Flute.svg',
 		audios: ['Flute-vibey_150bpm.mp3']
 	}
 ];

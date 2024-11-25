@@ -38,7 +38,7 @@
 >
 	{#each instruments as instrument, i}
 		<MidiButton
-			img_url={base + '/images/instruments/' + instrument.image}
+			img_url={base + '/icons/instruments/' + instrument.image}
 			is_active={active_tile_list[i]}
 			use_audio={use_tile_sounds}
 			audio_url={use_tile_sounds
