@@ -1,23 +1,14 @@
 <script lang="ts">
+	import Pattern from '$lib/components/Pattern.svelte';
 
-	 import GIF from '$lib/components/GIF.svelte';
 
-	 let ready:boolean = $state(true)
+
+
+
 
 </script>
-
-
-<div class="flex flex-col justify-center items-center w-screen h-screen bg-red-600 z-10">
-	<button
-		class="w-40 h-40 bg-blue-500 z-1"
-		onclick={() => {ready=true}}
-
-	>Lets Go</button>
+<div class="flex flex-col  justify-center justify-items-center items-center bg-blue-300 w-screen h-screen">
+	<div class="w-3/4 ">
+<Pattern/>
+		</div>
 </div>
-
-
-{#if ready}
-
-		<GIF success={true}></GIF>
-
-{/if}
