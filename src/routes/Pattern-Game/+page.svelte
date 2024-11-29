@@ -33,9 +33,10 @@
 	const loadMidiFile = async (midi_path: string, index: number) => {
 
 
-		const response = await fetch(base + '/src/lib/midis/' + midi_path);
+		const response = await fetch(base+"/midis/"+midi_path);
 		const arrayBuffer = await response.arrayBuffer();
 		const uintArr = new Uint8Array(arrayBuffer);
+		console.log(uintArr)
 		const parsed = midiManager.parseMidi(uintArr);
 		const tick_delta: number = 24;
 		const events: { [key: number]: number[] } = {};
