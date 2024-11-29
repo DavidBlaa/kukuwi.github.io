@@ -1,1 +1,0 @@
-import{i as e,g as t,j as c}from"./runtime.BoY70jnu.js";import{l as u}from"./index.BFqC5wTN.js";function i(o){throw new Error("lifecycle_outside_component")}function f(o){e===null&&i(),u&&e.l!==null?l(e).m.push(o):t(()=>{const n=c(o);if(typeof n=="function")return n})}function l(o){var n=o.l;return n.u??(n.u={a:[],b:[],m:[]})}export{f as o};
