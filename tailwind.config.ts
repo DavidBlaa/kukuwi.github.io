@@ -8,6 +8,10 @@ export default {
 		extend: {
 			animation: {
         'spin-slow': 'spin 3s linear infinite',
+      },
+			gridTemplateColumns: {
+
+        '16': 'repeat(16, minmax(0, 1fr))',
       }
 		}
 	},

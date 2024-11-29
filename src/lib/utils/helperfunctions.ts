@@ -59,3 +59,29 @@ export function getRandomGIF(correctAnswer: boolean) {
 	const gifs = correctAnswer ? successGifs : failGifs;
 	return gifs[Math.floor(Math.random() * gifs.length)];
 }
+
+
+export function getRandomIndex(list: Array<any>) {
+	if (list != undefined) {
+		return parseInt('' + Math.random() * (list.length));
+	}
+
+	return -1;
+}
+
+
+export function getRandomSubset(list: Array<any>, count: number): Array<any> {
+	const indexList: number[] = [];
+	const tmp: any[] = [];
+
+	do {
+		const i = getRandomIndex(list);
+		if (!indexList.includes(i)) {
+			indexList.push(i);
+			tmp.push(list[i]);
+		}
+
+	} while (tmp.length < count);
+
+	return tmp;
+}
