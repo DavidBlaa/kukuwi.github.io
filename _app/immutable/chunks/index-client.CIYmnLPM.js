@@ -1,1 +1,0 @@
-import{k as e,j as t,l as c}from"./runtime.Buz-Ab-H.js";import{l}from"./index.BFqC5wTN.js";function u(o){throw new Error("lifecycle_outside_component")}function f(o){e===null&&u(),l&&e.l!==null?r(e).m.push(o):t(()=>{const n=c(o);if(typeof n=="function")return n})}function r(o){var n=o.l;return n.u??(n.u={a:[],b:[],m:[]})}export{f as o};
