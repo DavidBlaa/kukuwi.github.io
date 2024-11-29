@@ -2,12 +2,15 @@
 
 	let {
 		pattern_array,
-		instrument_names
+		active = $bindable(false),
+		onmouseup
+
 
 
 	}: {
 		pattern_array: boolean[];
-		instrument_names: string[];
+		active : boolean;
+		onmouseup: (...args: any[]) => any;
 	} = $props();
 
 
@@ -45,22 +48,11 @@
 
 
 </script>
-<div class="flex h-full w-full flex-row border-4 border-gray-700 shadow-2xl roundGed">
-
-	<div class="grid basis-1/6 grid-cols-1">
-		{#each instrument_names as n}
-			<p class="flex h-full flex-row items-center justify-center border border-black bg-gray-300">{n}</p>
-		{/each}
-	</div>
-
-	<div class="grid basis-5/6 grid-cols-16">
-
+<button
+	class=" grid grid-cols-16 h-full w-full flex-row border-4 {active?'border-blue-600 shadow-blue-600 shadow-2xl ':'border-gray-500'} rounded"
+	{onmouseup}
+>
 		{#each color_array as c}
-
-			<div class="h-full  {c} border-black border"></div>
-
+			<div class="h-full {c} border-black border"></div>
 		{/each}
-	</div>
-
-
-</div>
+</button>
