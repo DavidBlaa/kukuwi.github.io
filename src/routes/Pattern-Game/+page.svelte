@@ -17,7 +17,7 @@
 	let correct_index: number = $state(0);
 	let selected_index: number = $state(-1);
 	let loaded: boolean = $state(false);
-	let sound_path: string = $state('');
+	let sound_path: string = $state('4_Rock 2.wav');
 	let game_ended: boolean = $state(false);
 	let track_paused = $state(false);
 	let sound_effect_paused: boolean = $state(false);
