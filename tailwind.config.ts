@@ -13,7 +13,7 @@ export default {
 				'kukuwi-red': {
 					light: '#ff4c58',
 					DEFAULT: '#fa2c3a',
-					dark: '#db2733'
+					dark: '#cb1728'
 				},
 				'kukuwi-yellow': {
 					light: '#ffdc37',
