@@ -98,52 +98,58 @@
 
 	<section>
 		<h2 class="pb-2 text-2xl font-bold">Button3d</h2>
-		<div class="flex items-center gap-2">
-			<ul class="flex flex-col gap-5 text-3xl font-bold text-white">
-				<li>
-					<Button3d bgFront="bg-green-500" bgBack="bg-green-600" padding="px-8 py-2">
-						Level 1
-					</Button3d>
-				</li>
-				<li>
-					<Button3d bgFront="bg-yellow-500" bgBack="bg-yellow-600" padding="px-8 py-2">
-						Level 2
-					</Button3d>
-				</li>
-				<li>
-					<Button3d bgFront="bg-red-500" bgBack="bg-red-600" padding="px-8 py-2">Level 3</Button3d>
-				</li>
-			</ul>
-			<aside class="mr-20">
-				<ul class="flex flex-col gap-1 pl-2 text-sm leading-4">
+		<div class="flex flex-col gap-10 xl:flex-row">
+			<section class="flex items-center">
+				<ul class="flex flex-col gap-5 text-3xl font-bold text-white">
 					<li>
-						<strong>bgFront:</strong><br />1. bg-green-500<br />2. bg-yellow-500<br />3. bg-red-500
+						<Button3d bgFront="bg-green-500" bgBack="bg-green-600" padding="px-8 py-2">
+							Level 1
+						</Button3d>
 					</li>
 					<li>
-						<strong>bgBack:</strong><br />1. bg-green-600<br />2. bg-yellow-600<br />3. bg-red-600
-					</li>
-					<li><strong>padding:</strong> px-8 py-2</li>
-					<li><strong>children:</strong><br />1. Level 1<br />2. Level 2<br />3. Level 3</li>
-				</ul>
-			</aside>
-			<Button3d bgFront="bg-kukuwi-blue" bgBack="bg-kukuwi-blue-dark" padding="px-8 py-2">
-				<Icon src={FaSolidPlay} color="white" className="size-24" />
-			</Button3d>
-			<aside>
-				<ul class="flex flex-col gap-1 pl-2 text-sm leading-4">
-					<li>
-						<strong>bgFront:</strong> bg-kukuwi-blue
+						<Button3d bgFront="bg-yellow-500" bgBack="bg-yellow-600" padding="px-8 py-2">
+							Level 2
+						</Button3d>
 					</li>
 					<li>
-						<strong>bgBack:</strong> bg-kukuwi-blue-dark
-					</li>
-					<li><strong>padding:</strong> px-8 py-2</li>
-					<li>
-						<strong>children:</strong>
-						{'<Icon src={FaSolidPlay} color="white" className="size-24" />'}
+						<Button3d bgFront="bg-red-500" bgBack="bg-red-600" padding="px-8 py-2">Level 3</Button3d
+						>
 					</li>
 				</ul>
-			</aside>
+				<aside class="mr-20">
+					<ul class="flex flex-col gap-1 pl-2 text-sm leading-4">
+						<li>
+							<strong>bgFront:</strong><br />1. bg-green-500<br />2. bg-yellow-500<br />3.
+							bg-red-500
+						</li>
+						<li>
+							<strong>bgBack:</strong><br />1. bg-green-600<br />2. bg-yellow-600<br />3. bg-red-600
+						</li>
+						<li><strong>padding:</strong> px-8 py-2</li>
+						<li><strong>children:</strong><br />1. Level 1<br />2. Level 2<br />3. Level 3</li>
+					</ul>
+				</aside>
+			</section>
+			<section class="flex items-center">
+				<Button3d bgFront="bg-kukuwi-blue" bgBack="bg-kukuwi-blue-dark" padding="px-8 py-2">
+					<Icon src={FaSolidPlay} color="white" className="size-24" />
+				</Button3d>
+				<aside>
+					<ul class="flex flex-col gap-1 pl-2 text-sm leading-4">
+						<li>
+							<strong>bgFront:</strong> bg-kukuwi-blue
+						</li>
+						<li>
+							<strong>bgBack:</strong> bg-kukuwi-blue-dark
+						</li>
+						<li><strong>padding:</strong> px-8 py-2</li>
+						<li>
+							<strong>children:</strong>
+							{'<Icon src={FaSolidPlay} color="white" className="size-24" />'}
+						</li>
+					</ul>
+				</aside>
+			</section>
 		</div>
 	</section>
 </main>
