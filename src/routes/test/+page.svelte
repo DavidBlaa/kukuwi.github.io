@@ -1,23 +1,28 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import * as midiManager from 'midi-file';
+	import { base } from '$app/paths';
 
-	 import GIF from '$lib/components/GIF.svelte';
 
-	 let ready:boolean = $state(true)
+
+	const loadMidiFile = async () =>{
+		const response = await fetch(base+'/src/lib/midis/test.mid');
+		const arrayBuffer = await response.arrayBuffer();
+		const uintArr = new Uint8Array(arrayBuffer);
+		console.log(uintArr);
+		const parsed = midiManager.parseMidi(uintArr);
+
+		console.log(parsed)
+
+	}
+
+	onMount( () => {
+
+		loadMidiFile();
+
+
+
+	});
+
 
 </script>
-
-
-<div class="flex flex-col justify-center items-center w-screen h-screen bg-red-600 z-10">
-	<button
-		class="w-40 h-40 bg-blue-500 z-1"
-		onclick={() => {ready=true}}
-
-	>Lets Go</button>
-</div>
-
-
-{#if ready}
-
-		<GIF success={true}></GIF>
-
-{/if}

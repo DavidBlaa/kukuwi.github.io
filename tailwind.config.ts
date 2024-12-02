@@ -25,6 +25,9 @@ export default {
 					DEFAULT: '#2498b7',
 					dark: '#1e7e96'
 				}
+			},
+			gridTemplateColumns: {
+				'16': 'repeat(16, minmax(0, 1fr))'
 			}
 		}
 	},

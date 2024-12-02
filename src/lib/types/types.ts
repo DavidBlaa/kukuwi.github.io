@@ -25,3 +25,11 @@ export type KlangQuizLevel = {
 	instruments: number;
 	sameCategory: boolean;
 };
+
+
+export type pattern_type = {
+	midi_src: string;
+	audio_src: string;
+	instrument_type: "drum" | "Bass" | "Piano";
+	n_instruments: number
+}

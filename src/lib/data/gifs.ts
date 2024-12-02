@@ -8,4 +8,9 @@ export const successGifs: string[] = [
 	'happy-snoopy.gif'
 ];
 
-export const failGifs: string[] = ['fail1.gif', 'fail2.gif', 'fail3.gif', 'fail4.gif'];
+export const failGifs: string[] = [
+	'fail1.gif',
+	'fail2.gif',
+	'fail3.gif',
+	'fail4.gif'
+];
