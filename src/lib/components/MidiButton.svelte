@@ -34,7 +34,6 @@
 		volume = 0.5
 	}: ComponentProps = $props();
     
-	console.log(img_url); 
 	export function handle_music_tile_click(end_of_song: boolean = false): void {
 		is_active = !is_active;
 
@@ -73,4 +72,3 @@
 		{/if}
 	</button>
 </div>
-    
