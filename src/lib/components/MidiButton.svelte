@@ -66,27 +66,11 @@
 			: passiv_color_bottom}
     border-b-[1px] border-white"
 	>
-	<Icon src={img_url} className="icon-size"/>
+	<Icon src={img_url} className=""/>
 		{#if use_audio}
 			<audio src={audio_url} bind:paused bind:volume onended={() => handle_music_tile_click(true)}
 			></audio>
 		{/if}
 	</button>
-	<style>
-		.icon-container{
-			width: clamp(20rem, 80vw, 30rem);
-			height: clamp(20rem, 80vw, 30rem);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			margin: auto; 
-			border: 1px solid red; 
-		}
-		.icon-size {
-            width: 100%; 
-            height: 100%; 
-            object-fit: contain; /* Bild wird in SVG-Container eingepasst */
-        }
-	</style>
 </div>
     
