@@ -1,0 +1,1 @@
+import"../chunks/disclose-version.Bg9kRutz.js";import"../chunks/legacy.CtaTdtmd.js";import{a as o,t as p}from"../chunks/template.CElCRC7T.js";var r=p("<h1>Start</h1>");function i(t){var a=r();o(t,a)}export{i as component};
