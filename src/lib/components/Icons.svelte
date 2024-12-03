@@ -14,7 +14,7 @@
 
   <style>
     .icon {
-      padding: 5px;
+      padding: 10px;
     }
   </style>
     
