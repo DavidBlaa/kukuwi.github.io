@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Icon from '$lib/components/Icons.svelte';
 	interface ComponentProps {
 		img_url: string;
 		is_active: boolean;
@@ -32,7 +33,8 @@
 		use_header = true,
 		volume = 0.5
 	}: ComponentProps = $props();
-
+    
+	console.log(img_url); 
 	export function handle_music_tile_click(end_of_song: boolean = false): void {
 		is_active = !is_active;
 
@@ -64,14 +66,27 @@
 			: passiv_color_bottom}
     border-b-[1px] border-white"
 	>
-		<img
-			class="flex flex-col items-center justify-center rounded-xl p-2 lg:p-0"
-			alt={name}
-			src={img_url}
-		/>
+	<Icon src={img_url} className="icon-size"/>
 		{#if use_audio}
 			<audio src={audio_url} bind:paused bind:volume onended={() => handle_music_tile_click(true)}
 			></audio>
 		{/if}
 	</button>
+	<style>
+		.icon-container{
+			width: clamp(20rem, 80vw, 30rem);
+			height: clamp(20rem, 80vw, 30rem);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: auto; 
+			border: 1px solid red; 
+		}
+		.icon-size {
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain; /* Bild wird in SVG-Container eingepasst */
+        }
+	</style>
 </div>
+    

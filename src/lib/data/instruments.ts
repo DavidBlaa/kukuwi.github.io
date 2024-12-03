@@ -4,7 +4,7 @@ export const instruments: Instrument[] = [
 	{
 		name: 'Schlagzeug',
 		category: 'Schlaginstrumente',
-		image: 'Drum.svg',
+		image: 'Drum.svg', 
 		audios: [
 			'Drums - Funk 111 bpm.mp3',
 			'Drums - Funk 112 bpm.mp3',

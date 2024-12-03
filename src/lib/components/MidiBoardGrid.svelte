@@ -2,7 +2,7 @@
 	import MidiButton from '$lib/components/MidiButton.svelte';
 	import type { Instrument, KlangQuizInstrument } from '$lib/types/types';
 	import { base } from '$app/paths';
-
+	
 	interface ComponentsProps {
 		sound_level_float: number;
 		active_tile_list: boolean[];
@@ -12,7 +12,7 @@
 		onmouseup: (end_of_song: boolean, id: number) => any;
 		grid_layout?: string;
 	}
-
+ 
 	let {
 		sound_level_float = $bindable(),
 		active_tile_list,
@@ -20,7 +20,7 @@
 		use_tile_sounds,
 		instruments,
 		onmouseup,
-		grid_layout = 'grid-cols-6 lg:grid-cols-5'
+		grid_layout = 'grid-cols-4'
 	}: ComponentsProps = $props();
 </script>
 
