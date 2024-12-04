@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Icon from '$lib/components/Icon.svelte';
 	interface ComponentProps {
 		img_url: string;
 		is_active: boolean;
@@ -32,7 +33,7 @@
 		use_header = true,
 		volume = 0.5
 	}: ComponentProps = $props();
-
+    
 	export function handle_music_tile_click(end_of_song: boolean = false): void {
 		is_active = !is_active;
 
@@ -64,11 +65,7 @@
 			: passiv_color_bottom}
     border-b-[1px] border-white"
 	>
-		<img
-			class="flex flex-col items-center justify-center rounded-xl p-2 lg:p-0"
-			alt={name}
-			src={img_url}
-		/>
+	<Icon src={img_url} className=""/>
 		{#if use_audio}
 			<audio src={audio_url} bind:paused bind:volume onended={() => handle_music_tile_click(true)}
 			></audio>
