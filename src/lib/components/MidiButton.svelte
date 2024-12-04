@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Icon from '$lib/components/Icons.svelte';
+    import Icon from '$lib/components/Icon.svelte';
 	interface ComponentProps {
 		img_url: string;
 		is_active: boolean;
