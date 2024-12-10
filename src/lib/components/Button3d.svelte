@@ -5,6 +5,7 @@
 		padding?: string;
 		translateY?: string;
 		children: any;
+		others?: any;
 	};
 
 	let {
@@ -12,11 +13,15 @@
 		bgBack,
 		padding,
 		translateY = 'translate-y-[-0.375rem]',
-		children
+		children,
+		...others
 	}: Button3dProps = $props();
 </script>
 
-<button class={`rounded-xl border-none p-0 active:[&>span]:translate-y-[-0.125rem] ${bgBack}`}>
+<button
+	class={`rounded-xl border-none p-0 active:[&>span]:translate-y-[-0.125rem] ${bgBack}`}
+	{...others}
+>
 	<span class={`block rounded-xl duration-75 ${translateY} ${bgFront} ${padding}`}>
 		{@render children()}
 	</span>
