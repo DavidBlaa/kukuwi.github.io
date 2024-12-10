@@ -30,7 +30,7 @@
 					  image={{ src: '/images/Hut_2.png', alt: 'Hut' }}
 					  bgFront="bg-kukuwi-red"
 					  bgBack="bg-kukuwi-red-dark"
-					  on:click="{goToUebung}"/>
+					  onclick="{goToUebung}"/>
 					</div>
 				</div>
 				<div class="w-1/2 flex items-center justify-center">
@@ -40,7 +40,7 @@
 					     image={{ src: '/images/Pokal.png', alt: 'Pokal' }}
 					     bgFront="bg-kukuwi-blue"
 					     bgBack="bg-kukuwi-blue-dark"
-		                 onClick={goToStart} />
+		                 onclick={goToStart} />
                            
 					</div>
 	    </div>
