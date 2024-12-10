@@ -112,8 +112,14 @@
 						</Button3d>
 					</li>
 					<li>
-						<Button3d bgFront="bg-red-500" bgBack="bg-red-600" padding="px-8 py-2">Level 3</Button3d
+						<Button3d
+							bgFront="bg-red-500"
+							bgBack="bg-red-600"
+							padding="px-8 py-2"
+							onclick={() => console.log('Level 3 wurde angeklickt!')}
 						>
+							Level 3
+						</Button3d>
 					</li>
 				</ul>
 				<aside class="mr-20">
