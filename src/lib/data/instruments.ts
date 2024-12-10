@@ -1,5 +1,6 @@
 import type { Instrument } from '$lib/types/types';
 
+
 export const instruments: Instrument[] = [
 	{
 		name: 'Schlagzeug',
