@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { Highscore_type } from '$lib/types/types';
-import Crown from '$lib/components/Crown.svelte';
+import Crown from '$lib/components/icons/Crown.svelte';
 
 	let {
 		data
