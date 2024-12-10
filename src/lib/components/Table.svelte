@@ -11,23 +11,20 @@
 	} = $props();
 
 
-
 	const data_out: { rank: number; name: string, points: number, highlight: boolean }[] = $state([]);
 
 	onMount(() => {
 
-		for(const [index,element] of data.entries()){
+		for (const [index, element] of data.entries()) {
 
-			if (index <10){
-				data_out.push({rank:index+1,name:element.name,points:element.points,highlight:element.highlight});
+			if (index < 10) {
+				data_out.push({ rank: index + 1, name: element.name, points: element.points, highlight: element.highlight });
 			}
-			if(index >10 && element.highlight){
+			if (index > 10 && element.highlight) {
 
-				data_out[9] = {rank:index+1,name:element.name,points:element.points,highlight:element.highlight};
+				data_out[9] = { rank: index + 1, name: element.name, points: element.points, highlight: element.highlight };
 			}
-	}
-
-
+		}
 
 
 	});
