@@ -2,6 +2,7 @@
 	import { highscore_table } from '$lib/stores/HighscoreStore.ts';
 	import { goto } from '$app/navigation';
 	import { base } from '$app/paths';
+	import Button3d from '$lib/components/Button3d.svelte';
 
 	let { points = 4000 }: { points?: number } = $props();
 
@@ -43,12 +44,12 @@
 			<input bind:value={username} class="basis-1/12 rounded-2xl border-black bg-white text-center text-2xl z-60"
 						 placeholder="Spielername eingeben" />
 
-			<div class="flex flex-col">
-				<button class="rounded-2xl bg-green-700 p-3 text-3xl text-white" onmousedown={()=>addUserScore()}>Abschicken
-				</button>
-				<button class="mt-3 rounded-2xl p-3 text-3xl text-white bg-kukuwi-red-dark" onmousedown={()=> goto(base+"/")}>
+			<div class="flex flex-col text-3xl text-white gap-y-4 ">
+				<Button3d  bgFront={"bg-green-500"} bgBack={"bg-green-600"} padding={"p-3"} onclick={()=>addUserScore()}>Abschicken
+				</Button3d>
+				<Button3d bgFront={"bg-red-500"} bgBack={"bg-red-600"} padding={"p-3"} onmousedown={()=> goto(base+"/")}>
 					Überspringen
-				</button>
+				</Button3d>
 			</div>
 		</div>
 	</div>
