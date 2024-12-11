@@ -9,20 +9,22 @@
 	let username: string = $state('');
 
 	function addUserScore() {
-		highscore_table.update(currentData => {
+		if (highscore_table) {
+			highscore_table.update(currentData => {
 
-			for (const entry of currentData) {
+				for (const entry of currentData) {
 
-				entry.highlight = false;
-
-
-			}
-
-			currentData.push({ name: username, points: points, highlight: true });
+					entry.highlight = false;
 
 
-			return currentData;
-		});
+				}
+
+				currentData.push({ name: username, points: points, highlight: true });
+
+
+				return currentData;
+			});
+		}
 
 		goto(base + '/Bestenliste');
 
@@ -45,9 +47,10 @@
 						 placeholder="Spielername eingeben" />
 
 			<div class="flex flex-col text-3xl text-white gap-y-4 ">
-				<Button3d  bgFront={"bg-green-500"} bgBack={"bg-green-600"} padding={"p-3"} onclick={()=>addUserScore()}>Abschicken
+				<Button3d bgBack={"bg-green-600"} bgFront={"bg-green-500"} onclick={()=>addUserScore()} padding={"p-3"}>
+					Abschicken
 				</Button3d>
-				<Button3d bgFront={"bg-red-500"} bgBack={"bg-red-600"} padding={"p-3"} onmousedown={()=> goto(base+"/")}>
+				<Button3d bgBack={"bg-red-600"} bgFront={"bg-red-500"} onmousedown={()=> goto(base+"/")} padding={"p-3"}>
 					Überspringen
 				</Button3d>
 			</div>
