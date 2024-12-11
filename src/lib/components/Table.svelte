@@ -15,6 +15,8 @@
 
 	onMount(() => {
 
+		data.sort((a: Highscore_type, b: Highscore_type) => (a.points > b.points) ? -1 : 1);
+
 		for (const [index, element] of data.entries()) {
 
 			if (index < 10) {
@@ -49,7 +51,7 @@
 		</thead>
 		<tbody>
 		{#each data_out as row}
-			<tr class="text-1xl text-center text-white {row.highlight?'bg-green-500':''}">
+			<tr class="text-center text-white {row.highlight?'bg-green-500':''}">
 				<td class="px-2 py-3">{row.rank}</td>
 				<td class="px-2 py-3">{row.name}</td>
 				<td class="px-2 py-3">{row.points}</td>

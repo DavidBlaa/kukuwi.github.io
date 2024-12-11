@@ -10,7 +10,7 @@
 	import {base} from '$app/paths';
 
 	let table: Highscore_type[] = $highscore_table;
-	table.sort((a: Highscore_type, b: Highscore_type) => (a.points > b.points) ? -1 : 1);
+
 
 </script>
 
