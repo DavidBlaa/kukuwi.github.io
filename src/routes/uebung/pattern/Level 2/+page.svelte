@@ -13,7 +13,7 @@
 	import { goto } from '$app/navigation';
 	import { patternQuizLevels } from '$lib/data/patternQuizLevels';
 
-    let level = 2;
+    let level = 1;
 	let patternQuizLevel = patternQuizLevels[level];
 	const all_patterns: Array<{ pattern: boolean[]; selected: boolean; index: number }> = $state([]);
 	let correct_index: number = $state(0);

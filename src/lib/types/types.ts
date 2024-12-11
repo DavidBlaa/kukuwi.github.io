@@ -33,3 +33,9 @@ export type pattern_type = {
 	instrument_type: "drum" | "Bass" | "Piano";
 	n_instruments: number
 }
+
+export type patternQuizLevel = {
+	difficulty: string;
+	n_instruments: number;
+	rows: number;
+}

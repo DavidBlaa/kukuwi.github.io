@@ -1,7 +1,6 @@
 <script>
 	import { goto } from "$app/navigation";
 	import { base } from '$app/paths';
-	import Button3d from '$lib/components/Button3d.svelte';
 	import MenuCard from '$lib/components/MenuCard.svelte';
 //Für Weiterleitung auf Start- bzw. Übungsseite
 	const goToUebung = async() => {
