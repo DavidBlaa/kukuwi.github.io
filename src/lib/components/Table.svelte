@@ -16,14 +16,32 @@
 
 			$highscore_table.sort((a: Highscore_type, b: Highscore_type) => (a.points > b.points) ? -1 : 1);
 
+
+			let rank: number = 0;
+			let score_before: number = 100000000;
+			let same_rank: number = 1;
+
 			for (const [index, element] of $highscore_table.entries()) {
 
+				if (element.points < score_before) {
+
+					score_before = element.points;
+
+					if (same_rank > 1) {
+						same_rank = 1;
+					}
+
+					rank += same_rank;
+
+				} else {
+					++same_rank;
+				}
 				if (index < 10) {
-					data_out.push({ rank: index + 1, name: element.name, points: element.points, highlight: element.highlight });
+					data_out.push({ rank: rank, name: element.name, points: element.points, highlight: element.highlight });
 				}
 				if (index > 10 && element.highlight) {
 
-					data_out[9] = { rank: index + 1, name: element.name, points: element.points, highlight: element.highlight };
+					data_out[9] = { rank: rank, name: element.name, points: element.points, highlight: element.highlight };
 				}
 			}
 		}
@@ -82,5 +100,9 @@
 		{/each}
 		</tbody>
 	</table>
+	{#if data_out.length === 0}
+		<div class="text-center text-white text-2xl">Bisher noch keine Einträge</div>
+		>
+	{/if}
 </div>
 
