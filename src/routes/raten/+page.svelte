@@ -5,6 +5,7 @@
 	import { base } from '$app/paths';
 	import GameProgressBar from '$lib/components/GameProgressBar.svelte';
 	import PatternGame from '$lib/components/PatternGame.svelte';
+	import NameInput from '$lib/components/NameInput.svelte';
 
 	const gameLength = gameRoundList.length;
 	let round = $state(1);
@@ -56,6 +57,9 @@
 			{GIFButtonTextSuccess}
 			{GIFButtonTextFailure}
 		/>
+		{#if gameFinished}
+			<NameInput score={totalScore} />
+		{/if}
 	{:else if gameRound.game === 'pattern'}
 		<PatternGame
 			difficulty={gameRound.difficulty}
@@ -64,6 +68,9 @@
 			{GIFButtonTextSuccess}
 			{GIFButtonTextFailure}
 		/>
+		{#if gameFinished}
+			<NameInput score={totalScore} />
+		{/if}
 	{:else}
 		<p>Wrong game specified in playthrough.ts!</p>
 	{/if}
