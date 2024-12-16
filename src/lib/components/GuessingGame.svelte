@@ -4,59 +4,67 @@
 	import MidiBoardGrid from '$lib/components/MidiBoardGrid.svelte';
 	import MusicControl from '$lib/components/MusicControl.svelte';
 	import GIF from '$lib/components/GIF.svelte';
-	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
+	import { getKlangQuizInstruments, selectInstrumentToBeFound } from '$lib/utils/helperfunctions';
+	import { klangQuizLevels } from '$lib/data/klangQuizLevels';
+	import { base } from '$app/paths';
 
 	let {
-		instruments,
-		active_tile_list,
-		pause_tile_list,
-		board_bg_color = 'bg-[#252525]',
-		track_source,
-		correct_instrument_id
+		difficulty,
+		handleNextRound,
+		GIFButtonTextSuccess,
+		GIFButtonTextFailure,
+		volume = $bindable()
 	}: {
-		instruments: KlangQuizInstrument[];
-		active_tile_list: boolean[];
-		pause_tile_list: boolean[];
-		onmouseup: (end_of_song: boolean, id: number) => void;
-		board_bg_color?: string;
-		track_source: string;
-		track_paused?: boolean;
-		correct_instrument_id: number;
+		difficulty: number;
+		handleNextRound: (roundScore: number) => void;
+		GIFButtonTextSuccess: string;
+		GIFButtonTextFailure: string;
+		volume: number;
 	} = $props();
 
-	let sound_level_float: number = $state(0.4);
+	let trackPaused = $state(false);
+	let soundEffectPaused = $state(true);
+	let roundEnded = $state(false);
+	let roundWon = $state(false);
 
-	function handle_instrument_buttons(end_of_sound: boolean, id: number): void {
-		time_running = false;
-		track_paused = true;
-		game_won = id == correct_instrument_id;
-		game_ended = true;
-		sound_effect_paused = false;
+	let time = $state(0);
+	let timeRunning = $state(true);
+	let tries = $state(0);
+	let repeats = $state(0);
+
+	let usedInstruments = $state<KlangQuizInstrument[]>();
+	let correctInstrument = $state<KlangQuizInstrument>();
+	onMount(() => {
+		usedInstruments = getKlangQuizInstruments(
+			klangQuizLevels[difficulty - 1].instruments,
+			klangQuizLevels[difficulty - 1].sameCategory
+		);
+		correctInstrument = selectInstrumentToBeFound(usedInstruments);
+	});
+
+	let correctInstrumentIndex = $derived(correctInstrument?.index);
+	let n_instruments = $derived(usedInstruments?.length);
+	const activeTileList: boolean[] = $derived(Array(n_instruments).fill(false));
+	const pauseTileList: boolean[] = $derived(Array(n_instruments).fill(true));
+	let trackSource = $derived(base + '/audios/' + correctInstrument?.audio);
+
+	function handleInstrumentButtonClick(end_of_song: boolean, index: number): void {
+		timeRunning = false;
+		trackPaused = true;
+		roundWon = index === correctInstrumentIndex;
+		roundEnded = true;
+		soundEffectPaused = false;
 	}
 
-	function handle_next_repeat_button(): void {
-		if (game_won) {
-			goto('/');
-		} else {
-			tries++;
-			time_running = true;
-			game_ended = false;
-		}
+	function handleGIFButtonClick(): void {
+		const roundScore = roundWon ? 1000 : 0; // TODO: Implement score calculate function
+		handleNextRound(roundScore);
 	}
-
-	let track_paused = $state(false);
-	let sound_effect_paused: boolean = $state(false);
-	let game_ended: boolean = $state(false);
-	let game_won: boolean = $state(false);
-
-	let time: number = $state(0);
-	let time_running: boolean = $state(true);
-	let tries: number = $state(0);
-	let repeats: number = $state(0);
 
 	function start() {
 		setInterval(() => {
-			if (time_running) {
+			if (timeRunning) {
 				time++;
 			}
 		}, 1000);
@@ -65,58 +73,37 @@
 	start();
 </script>
 
-<div
-	class="
-            flex
-            justify-evenly
-            rounded-2xl
-            {board_bg_color}
-            [rotate-y-20deg]
-            h-full
-            w-full
-            border-x-[10px]
-            border-b-[20px]
-            border-t-[10px]
-            border-b-gray-600
-            border-l-gray-200
-            border-r-gray-400
-            border-t-gray-400
-            p-3
-            shadow-2xl lg:p-10"
->
-	<div class="basis-2/12">
-		<MusicControl
-			{time}
-			{track_source}
-			bind:sound_level_float
-			bind:track_paused
-			{tries}
-			{repeats}
-		/>
-	</div>
-
-	<div class="basis-8/12">
-		<MidiBoardGrid
-			bind:sound_level_float
-			{active_tile_list}
-			{pause_tile_list}
-			use_tile_sounds={false}
-			{instruments}
-			onmouseup={handle_instrument_buttons}
-		/>
-	</div>
-
-	<div class="basis-1/12">
-		<SoundControl bind:sound_level_float />
-	</div>
-</div>
-{#if game_ended}
-	<div class="absolute left-0 top-0">
-		<GIF
-			bind:success={game_won}
-			onclick={handle_next_repeat_button}
-			bind:gif_sound_pause={sound_effect_paused}
-			bind:volume={sound_level_float}
-		/>
+{#if usedInstruments}
+	<div
+		class="[rotate-y-20deg] flex size-full justify-evenly rounded-2xl border-x-[10px] border-b-[20px] border-t-[10px] border-b-gray-600 border-l-gray-200 border-r-gray-400 border-t-gray-400 bg-[#d1d5db] p-3 shadow-2xl lg:p-10"
+	>
+		<div class="basis-2/12">
+			<MusicControl {time} {trackSource} {volume} bind:trackPaused {tries} {repeats} />
+		</div>
+		<div class="basis-8/12">
+			<MidiBoardGrid
+				{volume}
+				{activeTileList}
+				{pauseTileList}
+				useTileSounds={false}
+				instruments={usedInstruments}
+				onmouseup={handleInstrumentButtonClick}
+			/>
+		</div>
+		<div class="basis-1/12">
+			<SoundControl bind:volume />
+		</div>
+		{#if roundEnded}
+			<div class="absolute left-0 top-0">
+				<GIF
+					bind:success={roundWon}
+					onclick={handleGIFButtonClick}
+					{GIFButtonTextSuccess}
+					{GIFButtonTextFailure}
+					bind:gifSoundPaused={soundEffectPaused}
+					{volume}
+				/>
+			</div>
+		{/if}
 	</div>
 {/if}

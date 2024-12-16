@@ -1,53 +1,70 @@
 <script lang="ts">
-	import { klangQuizLevels } from '$lib/data/klangQuizLevels';
+	import { gameRoundList } from '$lib/data/playtrough';
 	import GuessingGame from '$lib/components/GuessingGame.svelte';
-	import type { KlangQuizInstrument } from '$lib/types/types';
-	import { getKlangQuizInstruments, selectInstrumentToBeFound } from '$lib/utils/helperfunctions';
 	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
+	import GameProgressBar from '$lib/components/GameProgressBar.svelte';
+	import PatternGame from '$lib/components/PatternGame.svelte';
 
-	let victory = $state(false);
+	const gameLength = gameRoundList.length;
+	let round = $state(1);
+	let gameRound = $derived(gameRoundList[round - 1]);
+	let gameFinished = $state(false);
+	let volume = $state(0.4);
+	let totalScore = $state(0);
+	let roundHistory: (boolean | undefined)[] = $state(Array(gameLength).fill(undefined));
+	let betweenRounds = $state(true);
 
-	let level = 1;
-	let klangQuizLevel = klangQuizLevels[level];
-	let usedInstruments = $state<KlangQuizInstrument[]>();
-	let correctInstrument = $state<KlangQuizInstrument>();
-	onMount(() => {
-		usedInstruments = getKlangQuizInstruments(
-			klangQuizLevel.instruments,
-			klangQuizLevel.sameCategory
-		);
-		correctInstrument = selectInstrumentToBeFound(usedInstruments);
-	});
+	onMount(() => handleMidRound());
 
-	let correctIndex = $derived(correctInstrument?.index);
-	let n_instruments = $derived(usedInstruments?.length);
-	const active_tile_list: boolean[] = $derived(Array(n_instruments).fill(false));
-	const pause_tile_list: boolean[] = $derived(Array(n_instruments).fill(true));
-	let track_source = $derived(base + '/audios/' + correctInstrument?.audio);
+	function handleMidRound() {
+		betweenRounds = true;
+		setTimeout(endLevelBeginScreen, 2000);
 
-	function handle_music_tile_click(end_of_song: boolean = false, index: number): void {
-		active_tile_list[index] = !active_tile_list[index];
-
-		if (index == correctIndex && !end_of_song) {
-			victory = true;
+		function endLevelBeginScreen() {
+			betweenRounds = false;
 		}
 	}
+
+	function handleNextRound(roundScore: number) {
+		totalScore += roundScore;
+		roundHistory[round - 1] = roundScore !== 0;
+
+		if (round === gameLength) {
+			gameFinished = true;
+		} else {
+			round++;
+			handleMidRound();
+		}
+	}
+
+	const GIFButtonTextSuccess = $derived(round === gameLength ? 'Zum Ergebnis' : 'Nächste Runde');
+	const GIFButtonTextFailure = $derived(GIFButtonTextSuccess);
 </script>
 
-{#if usedInstruments && correctIndex}
-	<div class="h-screen w-screen bg-blue-200 p-5">
+<main class="h-screen w-screen bg-blue-200 p-5">
+	{#if betweenRounds}
+		<div class="flex size-full flex-col items-center justify-center gap-28">
+			<h1 class="text-9xl font-extrabold text-neutral-600">RUNDE {round}</h1>
+			<GameProgressBar {roundHistory} {round} />
+		</div>
+	{:else if gameRound.game === 'klangQuiz'}
 		<GuessingGame
-			instruments={usedInstruments}
-			{active_tile_list}
-			{pause_tile_list}
-			board_bg_color="bg-gray-300"
-			onmouseup={handle_music_tile_click}
-			{track_source}
-			correct_instrument_id={correctIndex}
+			difficulty={gameRound.difficulty}
+			{handleNextRound}
+			bind:volume
+			{GIFButtonTextSuccess}
+			{GIFButtonTextFailure}
 		/>
-		{#if victory}
-			<h1>Gewonnen</h1>
-		{/if}
-	</div>
-{/if}
+	{:else if gameRound.game === 'pattern'}
+		<PatternGame
+			difficulty={gameRound.difficulty}
+			{handleNextRound}
+			{volume}
+			{GIFButtonTextSuccess}
+			{GIFButtonTextFailure}
+		/>
+	{:else}
+		<p>Wrong game specified in playthrough.ts!</p>
+	{/if}
+</main>
