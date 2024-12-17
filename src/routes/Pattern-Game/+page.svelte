@@ -1,13 +1,22 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import PatternGame from '$lib/components/PatternGame.svelte';
+	import { error } from '@sveltejs/kit';
+	import { onMount } from 'svelte';
 
 	let volume = $state(0.4);
 	let round = $state(1);
-	const difficulty = $page.url.searchParams.get('difficulty');
-	if (difficulty === null) {
-		throw Error('No difficulty defined in search params.');
-	}
+	let difficulty: string = $state('1');
+
+	onMount(() => {
+		const difficultyParam = $page.url.searchParams.get('difficulty');
+
+		if (difficultyParam === null) {
+			error(404, { message: 'No difficulty defined in search params.' });
+		}
+
+		difficulty = difficultyParam;
+	});
 
 	function handleNextRound(roundScore: number) {
 		if (roundScore !== 0) {
