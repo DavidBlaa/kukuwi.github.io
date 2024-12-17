@@ -33,7 +33,7 @@
 	let loaded: boolean = $state(false);
 	let soundPath: string = $state('4_Rock 2.wav');
 	let roundEnded: boolean = $state(false);
-	let trackPaused = $state(false);
+	let trackPaused = $state(true);
 	let soundEffectPaused: boolean = $state(false);
 	let roundWon: boolean = $state(false);
 
@@ -90,6 +90,9 @@
 
 		loaded = true;
 		start();
+
+		trackPaused = false;
+		repeats++;
 	});
 
 	function handlePatternClick(index: number) {
