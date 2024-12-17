@@ -8,16 +8,6 @@
 	let round = $state(1);
 	let difficulty: string = $state('1');
 
-	onMount(() => {
-		const difficultyParam = $page.url.searchParams.get('difficulty');
-
-		if (difficultyParam === null) {
-			error(404, { message: 'No difficulty defined in search params.' });
-		}
-
-		difficulty = difficultyParam;
-	});
-
 	function handleNextRound(roundScore: number) {
 		if (roundScore !== 0) {
 			round++;
