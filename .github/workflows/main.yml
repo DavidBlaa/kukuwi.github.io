@@ -30,9 +30,9 @@ jobs:
             rm -rf node_modules
           fi
 
-      - run: pnpm i # Run install
+      - run: pnpm install # Run install
       - run: pnpm run build # Run build
-      - run: dir
+      - run: ls -R ./build # Debugging: Inhalt des Build-Verzeichnisses anzeigen
       - run: cp -a static/. ./build/ # Copy missing files to build folder
 
       - name: Deploy
