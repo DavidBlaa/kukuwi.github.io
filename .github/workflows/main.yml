@@ -1,14 +1,14 @@
 name: GitHub Pages
 
 on:
-  push: 
+  push:
     branches:
-      - main  # Set a branch name to trigger deployment
+      - main # Set a branch name to trigger deployment
   pull_request:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest  # Set platform for runner
+    runs-on: ubuntu-latest # Set platform for runner
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
@@ -17,21 +17,21 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '22.11.0'
+          node-version: '22.12.0'
 
       - uses: pnpm/action-setup@v4
         with:
           version: 9
           run_install: true
 
-      - run: pnpm i  # Run install
-      - run: pnpm run build  # Run build
+      - run: pnpm i # Run install
+      - run: pnpm run build # Run build
       - run: dir
-      - run: cp -a static/. ./build/  # Copy missing files to build folder
+      - run: cp -a static/. ./build/ # Copy missing files to build folder
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build  # Copy all files from the build folder to the gh-page branch
+          publish_dir: ./build # Copy all files from the build folder to the gh-page branch
