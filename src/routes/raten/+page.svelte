@@ -2,7 +2,6 @@
 	import { gameRoundList } from '$lib/data/playtrough';
 	import GuessingGame from '$lib/components/GuessingGame.svelte';
 	import { onMount } from 'svelte';
-	import { base } from '$app/paths';
 	import GameProgressBar from '$lib/components/GameProgressBar.svelte';
 	import PatternGame from '$lib/components/PatternGame.svelte';
 	import NameInput from '$lib/components/NameInput.svelte';

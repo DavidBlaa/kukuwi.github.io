@@ -3,14 +3,11 @@
 	import * as midiManager from 'midi-file';
 	import { base } from '$app/paths';
 	import Pattern from '$lib/components/Pattern.svelte';
-	import { page } from '$app/stores';
-	import { error } from '@sveltejs/kit';
 	import { pattern_list } from '$lib/data/pattern';
 	import { getRandomIndex, getRandomSubset } from '$lib/utils/helperfunctions';
 	import type { pattern_type } from '$lib/types/types';
 	import MusicControl from '$lib/components/MusicControl.svelte';
 	import GIF from '$lib/components/GIF.svelte';
-	import { goto } from '$app/navigation';
 	import { patternLevels } from '$lib/data/patternLevels';
 
 	let {
