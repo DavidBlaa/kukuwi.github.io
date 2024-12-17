@@ -1,7 +1,6 @@
 // store.js
 
-import { useLocalStorage } from '$lib/stores/useLocalStorage.ts';
-
+import { useLocalStorage } from '$lib/stores/useLocalStorage';
 
 export const highscore_table = useLocalStorage('highScoreTable', [
 	{ name: 'Max Mustermann', points: 5230, highlight: false },
@@ -19,4 +18,3 @@ export const highscore_table = useLocalStorage('highScoreTable', [
 	{ name: 'Thomas Grün', points: 7640, highlight: false },
 	{ name: 'Laura Blau', points: 8990, highlight: false }
 ]);
-

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { highscore_table } from '$lib/stores/HighscoreStore.ts';
+	import { highscore_table } from '$lib/stores/HighscoreStore';
 	import { goto } from '$app/navigation';
 	import { base } from '$app/paths';
 	import Button3d from '$lib/components/Button3d.svelte';

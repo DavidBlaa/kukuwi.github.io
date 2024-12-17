@@ -3,6 +3,7 @@
 	import PatternGame from '$lib/components/PatternGame.svelte';
 	import { error } from '@sveltejs/kit';
 	import { onMount } from 'svelte';
+
 	let volume = $state(0.4);
 	let round = $state(1);
 	let difficulty: string = $state('1');
