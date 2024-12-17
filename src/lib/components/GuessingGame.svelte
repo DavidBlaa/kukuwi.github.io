@@ -23,7 +23,7 @@
 		volume: number;
 	} = $props();
 
-	let trackPaused = $state(true);
+	let trackPaused = $state(false);
 	let soundEffectPaused = $state(true);
 	let roundEnded = $state(false);
 	let roundWon = $state(false);
@@ -41,9 +41,6 @@
 			klangQuizLevels[difficulty - 1].sameCategory
 		);
 		correctInstrument = selectInstrumentToBeFound(usedInstruments);
-
-		trackPaused = false;
-		repeats++;
 	});
 
 	let correctInstrumentIndex = $derived(correctInstrument?.index);
