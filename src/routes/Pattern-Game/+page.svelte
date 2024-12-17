@@ -3,18 +3,15 @@
 	import PatternGame from '$lib/components/PatternGame.svelte';
 	import { error } from '@sveltejs/kit';
 	import { onMount } from 'svelte';
-
 	let volume = $state(0.4);
 	let round = $state(1);
 	let difficulty: string = $state('1');
 
 	onMount(() => {
 		const difficultyParam = $page.url.searchParams.get('difficulty');
-
 		if (difficultyParam === null) {
 			error(404, { message: 'No difficulty defined in search params.' });
 		}
-
 		difficulty = difficultyParam;
 	});
 
@@ -23,7 +20,6 @@
 			round++;
 		}
 	}
-
 	const GIFButtonTextSuccess = 'Nächste Runde';
 	const GIFButtonTextFailure = 'Erneuter Versuch';
 </script>
