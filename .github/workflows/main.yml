@@ -24,6 +24,12 @@ jobs:
           version: 9
           run_install: true
 
+      - name: Clean node_modules
+        run: |
+          if [ -d "node_modules" ]; then
+            rm -rf node_modules
+          fi
+
       - run: pnpm i # Run install
       - run: pnpm run build # Run build
       - run: dir
