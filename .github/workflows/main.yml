@@ -24,15 +24,9 @@ jobs:
           version: 9
           run_install: true
 
-      - name: Clean node_modules
-        run: |
-          if [ -d "node_modules" ]; then
-            rm -rf node_modules
-          fi
-
-      - run: pnpm install # Run install
+      - run: pnpm i # Run install
       - run: pnpm run build # Run build
-      - run: ls -R ./build # Debugging: Inhalt des Build-Verzeichnisses anzeigen
+      - run: dir
       - run: cp -a static/. ./build/ # Copy missing files to build folder
 
       - name: Deploy

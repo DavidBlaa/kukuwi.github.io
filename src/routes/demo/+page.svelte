@@ -1,12 +1,11 @@
 <script lang="ts">
-	import '$lib/components/DemoBoard.svelte';
 	import { instruments } from '$lib/data/instruments';
 	import MidiBoard from '$lib/components/DemoBoard.svelte';
 
 	let n_instruments: number = instruments.length;
 	const activeTileList: boolean[] = $state(Array(n_instruments).fill(false));
 	const pauseTileList: boolean[] = $state(Array(n_instruments).fill(true));
-	function alt_handle_music_tile_click(endOfSong: boolean = false, index: number): void {
+	function alt_handle_music_tile_click(endOfSong: boolean = false, index: number) {
 		activeTileList[index] = !activeTileList[index];
 
 		if (!endOfSong) {
