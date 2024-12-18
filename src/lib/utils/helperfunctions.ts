@@ -1,6 +1,8 @@
 import { failGifs, successGifs } from '$lib/data/gifs';
 import type { Instrument, KlangQuizInstrument } from '$lib/types/types';
 import { instruments as instrumentsJSON } from '../data/instruments';
+import { goto } from "$app/navigation";
+import { base } from '$app/paths';
 
 export function getKlangQuizInstruments(quantity: number, sameCategory?: boolean) {
 	let instruments: Instrument[] = [];
@@ -85,3 +87,11 @@ export function getRandomSubset(list: Array<any>, count: number): Array<any> {
 
 	return tmp;
 }
+
+export function goToStart(){
+	goto(base+'/raten')
+}
+
+export const goToUebung = async() => {
+	await goto(base+'/uebung');
+};

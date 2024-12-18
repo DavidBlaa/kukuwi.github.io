@@ -3,6 +3,7 @@
     import { Icon } from 'svelte-icons-pack';
     import { FaSolidPlay } from "svelte-icons-pack/fa";
     import MidiBoardInformation from "$lib/components/MidiBoardInformation.svelte";
+	import Button3d from "./Button3d.svelte";
 
 
     let {
@@ -72,29 +73,10 @@
 
         </div>
 
+        <Button3d bgFront="bg-kukuwi-blue" bgBack="bg-kukuwi-blue-dark" padding="px-8 py-2" onclick={()=>handle_play_button()} onmouseup={() => {}} class="">
+            <Icon src={FaSolidPlay} color="white" className="size-24" />
+        </Button3d> 
 
-
-        <button class='
-            flex
-            flex-col
-            justify-center
-            w-5/6
-            h-1/6
-            bg-blue-400
-            rounded-lg
-            cursor-pointer
-            select-none
-            active:translate-y-2  active:[box-shadow:0_0px_0_0_#1b6ff8,0_0px_0_0_#1b70f841]
-            active:border-b-[0px]
-            transition-all duration-150 [box-shadow:0_8px_0_0_#477aba,0_13px_0_0_#1b70f841]
-            border-[1px]
-            p-3
-        '
-        onclick={()=>handle_play_button()}
-        >
-            <Icon size="100%" color="white" src={FaSolidPlay}></Icon>
-
-        </button>
 
         <audio
             src = {track_source}

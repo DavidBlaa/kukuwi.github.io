@@ -6,6 +6,8 @@
 		translateY?: string;
 		children: any;
 		onclick?: (this: Window, ev: MouseEvent) => any;
+		onmouseup: (...args: any[]) => any;
+		class?: string;
 	};
 
 	let {
@@ -14,11 +16,12 @@
 		padding,
 		translateY = 'translate-y-[-0.375rem]',
 		children,
-		onclick
+		onclick,
+		onmouseup
 	}: Button3dProps = $props();
 </script>
 
-<button class={`rounded-xl border-none p-0 active:[&>span]:translate-y-[-0.125rem] ${bgBack}`} {onclick}>
+<button class={`rounded-xl border-none p-0 active:[&>span]:translate-y-[-0.125rem] ${bgBack}`} {onclick} {onmouseup}>
 	<span class={`block rounded-xl duration-75 ${translateY} ${bgFront} ${padding}`}>
 		{@render children()}
 	</span>

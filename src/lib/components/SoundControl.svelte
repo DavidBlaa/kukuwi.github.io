@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Button3d from "./Button3d.svelte";
+
 
 
     interface ComponentsProps {
@@ -47,7 +49,7 @@
 
 
 
-<div class="flex flex-col justify-end items-center w-full h-full">
+<div class="flex flex-col justify-end items-center space-y-5 w-full h-full">
 
     <div class="flex flex-col-reverse justify-center w-4/6 lg:w-1/3 h-full mb-5 rounded-2xl">
         {#each sound_level_list as s}
@@ -56,25 +58,37 @@
 
         {/each}
     </div>
-    <button class='w-5/6 lg:w-3/5 aspect-square bg-amber-500 rounded-full cursor-pointer select-none
-    active:translate-y-2  active:[box-shadow:0_0px_0_0_#1b6ff8,0_0px_0_0_#1b70f841]
-    active:border-b-[0px]
-    transition-all duration-150 [box-shadow:0_8px_0_0_#b07209,0_13px_0_0_#1b70f841]
-    border-[1px]
-    '
-    onclick={()=>handle_volume_buttons(true)}
-    >
-    <span class='flex flex-col justify-center items-center h-full text-white font-bold text-6xl pb-3'>+</span>
-    </button>
+    <Button3d 
+    bgFront="bg-amber-500"
+    bgBack="bg-amber-700"
+    onmouseup={() => {}}
+    onclick={() => handle_volume_buttons(true)}
+    class="w-5/6 lg:w-3/5 aspect-square rounded-full cursor-pointer select-none
+    active:translate-y-2 active:[box-shadow:0_0px_0_0_#1b6ff8,0_0px_0_0_#1b70f841]
+    active:border-b-[0px] transition-all duration-150 [box-shadow:0_8px_0_0_#b07209,0_13px_0_0_#1b70f841] border-[1px]"
+>
+    <span 
+        class="flex justify-center items-center h-full text-white font-bold text-6xl leading-none"
+        style="width: 1.0em; height: 1.0em;">
+        +
+    </span>
+</Button3d>
 
-    <button class='w-5/6 lg:w-3/5 aspect-square bg-amber-500  rounded-full cursor-pointer select-none mt-5
-    active:translate-y-2  active:[box-shadow:0_0px_0_0_#1b6ff8,0_0px_0_0_#1b70f841]
-    active:border-b-[0px]
-    transition-all duration-150 [box-shadow:0_8px_0_0_#b07209,0_13px_0_0_#1b70f841]
-    border-[1px]
-    '
-    onclick={()=>handle_volume_buttons(false)}
-    >
-    <span class='flex flex-col justify-center items-center h-full text-white font-bold text-6xl pb-3'>-</span>
-    </button>
+<Button3d 
+    bgFront="bg-amber-500"
+    bgBack="bg-amber-700"
+    onmouseup={() => {}}
+    onclick={() => handle_volume_buttons(false)}
+    class="w-5/6 lg:w-3/5 aspect-square rounded-full cursor-pointer select-none
+    active:translate-y-2 active:[box-shadow:0_0px_0_0_#1b6ff8,0_0px_0_0_#1b70f841]
+    active:border-b-[0px] transition-all duration-150 [box-shadow:0_8px_0_0_#b07209,0_13px_0_0_#1b70f841] border-[1px]"
+>
+    <span 
+        class="flex justify-center items-center h-full text-white font-bold text-6xl leading-none"
+        style="width: 1.0em; height: 1.0em;">
+        -
+    </span>
+</Button3d>
+
+
 </div>

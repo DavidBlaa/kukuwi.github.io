@@ -8,7 +8,7 @@
 
 	let victory = $state(false);
 
-	let level = 2;
+	let level = 3;
 	let klangQuizLevel = klangQuizLevels[level];
 	let usedInstruments = $state<KlangQuizInstrument[]>();
 	let correctInstrument = $state<KlangQuizInstrument>();

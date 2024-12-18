@@ -2,6 +2,8 @@
     import { goto } from "$app/navigation";
     import { base } from '$app/paths';
     import Button3d from '$lib/components/Button3d.svelte';
+    import MenuCard from "$lib/components/MenuCard.svelte";
+    import { goToStart } from "$lib/utils/helperfunctions";
 
     const levels = [
         { text: 'Level 1', bgFront: 'bg-green-500', bgBack: 'bg-green-600' },
@@ -28,26 +30,57 @@
                 instrument = 'drum';
                 rows = level === 'Level 1' ? '2' : level === 'Level 2' ? '3' : '4';
             }
+
             goto(`${base}/uebung/${uebungPath}/${level}?instrument=${instrument}&rows=${rows}`);
-        }   
+        }
     }
 </script>
 
-<main class="h-screen">
-    <div class="grid grid-cols-3 gap-4 h-full">
-        {#each ueberschriften as ueberschrift}
+<main class="h-screen overflow-hidden">
+    <!-- Grid mit 3 Spalten und 5 gleich großen Zeilen -->
+    <div class="grid grid-cols-3 gap-2 h-full" style="grid-template-rows: repeat(5, 1fr);">
+        {#each ueberschriften as ueberschrift, i}
             <div class="flex flex-col items-center h-full">
-                <div class={`flex justify-center items-center text-5xl font-bold ${ueberschrift.textColor} h-1/6`}>
+                <!-- Überschrift der Spalte -->
+                <div class={`flex justify-center items-center text-7xl font-bold ${ueberschrift.textColor} h-1/6`}>
                     {ueberschrift.text}
                 </div>
-                <div class="grid grid-rows-3 gap-4 mt-4 h-5/6 w-full">
+
+                <!-- Inhalte der Spalte (5 Zeilen) -->
+                <div class="grid gap-2 h-5/6 w-full" style="grid-template-rows: repeat(5, 1fr);">
                     {#each levels as level}
-                        <div class="flex justify-center items-center text-white font-bold text-3xl h-full w-full">
-                            <Button3d bgFront={level.bgFront} bgBack={level.bgBack} padding="px-8 py-2" onclick={() => handleLevelClick(ueberschrift.text, level.text)}>
+                        <!-- Level-Buttons -->
+                        <div class="flex justify-center items-center text-white font-bold text-5xl w-full h-full">
+                            <Button3d
+                                bgFront={level.bgFront}
+                                bgBack={level.bgBack}
+                                padding="px-1 py-1 md:px-2 md:py-2 lg:px-4 lg:py-4"
+                                onclick={() => handleLevelClick(ueberschrift.text, level.text)}
+                                onmouseup={() => {}}
+                                class="w-full h-full"
+                            >
                                 {level.text}
                             </Button3d>
                         </div>
                     {/each}
+
+                    <!-- Zusätzlicher Platz für die fünfte Zeile -->
+                    {#if ueberschrift.text === 'Pattern'}
+                        <!-- MenuCard in der 5. Zeile -->
+                        <div class="flex justify-center items-center text-white font-bold text-2xl w-full h-full">
+                            <MenuCard
+                                text="START"
+                                image={{ src: '/images/Pokal.png', alt: 'Pokal' }}
+                                bgFront="bg-kukuwi-blue"
+                                bgBack="bg-kukuwi-blue-dark"
+                                onclick={goToStart}
+                                class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32"
+                            />
+                        </div>
+                    {:else}
+                        <!-- Platzhalter für andere Spalten -->
+                        <div class="w-full h-full"></div>
+                    {/if}
                 </div>
             </div>
         {/each}

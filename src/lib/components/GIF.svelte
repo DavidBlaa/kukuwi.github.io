@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { getRandomGIF } from '$lib/utils/helperfunctions';
 	import { base } from '$app/paths';
+	import { goToUebung } from '$lib/utils/helperfunctions';
+	import Button3d from './Button3d.svelte';
 
 	interface component_prop_type {
 		success: boolean;
@@ -31,8 +33,13 @@
 			alt={success ? 'Gewonnen!!!' : 'Verloren :('}
 		/>
 
-		<button
-			class="
+		<Button3d
+		onclick={goToUebung}
+		bgFront="bg-amber-500"
+		bgBack="bg-amber-700"
+		onmouseup={() => {}}
+		>
+		<span class="
 							mt-3
 							flex
 							h-1/6
@@ -51,13 +58,12 @@
 							active:translate-y-2
 							active:border-b-[0px]
 							active:[box-shadow:0_0px_0_0_#d1870a,0_0px_0_0_#1b70f841]
-					"
-			{onclick}
-		>
+					">
 			{success ? 'RICHTIG :)' : ' leider falsch :('}
 			<br />
 			{success ? 'weiter' : 'nochmal?'}
-		</button>
+		</span>
+	</Button3d>
 		<audio src={sound} bind:paused={gif_sound_pause} bind:volume></audio>
 	</div>
 	<div
