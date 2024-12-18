@@ -1,0 +1,1 @@
+import{a as e,t as o}from"../chunks/disclose-version.BlfRRn3x.js";import"../chunks/legacy.Cx73ECVA.js";import{s,f as i}from"../chunks/runtime.BZDbob96.js";import{N as m}from"../chunks/NameInput.CMsoREp3.js";var n=o('<div class="h-screen w-screen bg-kukuwi-red">test</div> <!>',1);function v(a){var r=n(),t=s(i(r),2);m(t,{}),e(a,r)}export{v as component};
