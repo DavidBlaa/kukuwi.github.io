@@ -20,8 +20,8 @@
     function handleLevelClick(ueberschrift: string, level: string) {
         const uebungPath = ueberschriften.find(u => u.text === ueberschrift)?.path;
         if (uebungPath) {
-            let instrument = 'drum'; // Standardwert, kann angepasst werden
-            let rows = '2'; // Standardwert, kann angepasst werden
+            let instrument = 'drum'; 
+            let rows = '2'; 
 
             if (ueberschrift === 'Ratespiel') {
                 instrument = 'drum';
@@ -37,19 +37,15 @@
 </script>
 
 <main class="h-screen overflow-hidden">
-    <!-- Grid mit 3 Spalten und 5 gleich großen Zeilen -->
     <div class="grid grid-cols-3 gap-2 h-full" style="grid-template-rows: repeat(5, 1fr);">
         {#each ueberschriften as ueberschrift, i}
             <div class="flex flex-col items-center h-full">
-                <!-- Überschrift der Spalte -->
                 <div class={`flex justify-center items-center text-7xl font-bold ${ueberschrift.textColor} h-1/6`}>
                     {ueberschrift.text}
                 </div>
 
-                <!-- Inhalte der Spalte (5 Zeilen) -->
-                <div class="grid gap-2 h-5/6 w-full" style="grid-template-rows: repeat(5, 1fr);">
+                <div class="grid gap-1 h-5/6 w-full" style="grid-template-rows: repeat(5, 1fr);">
                     {#each levels as level}
-                        <!-- Level-Buttons -->
                         <div class="flex justify-center items-center text-white font-bold text-5xl w-full h-full">
                             <Button3d
                                 bgFront={level.bgFront}
@@ -64,9 +60,7 @@
                         </div>
                     {/each}
 
-                    <!-- Zusätzlicher Platz für die fünfte Zeile -->
                     {#if ueberschrift.text === 'Pattern'}
-                        <!-- MenuCard in der 5. Zeile -->
                         <div class="flex justify-center items-center text-white font-bold text-2xl w-full h-full">
                             <MenuCard
                                 text="START"
@@ -78,7 +72,6 @@
                             />
                         </div>
                     {:else}
-                        <!-- Platzhalter für andere Spalten -->
                         <div class="w-full h-full"></div>
                     {/if}
                 </div>

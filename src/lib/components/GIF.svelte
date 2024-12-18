@@ -15,7 +15,7 @@
 		success = $bindable(true),
 		onclick,
 		gif_sound_pause = $bindable(true),
-		volume = $bindable(0.5)
+		volume = $bindable(0.5),
 	}: component_prop_type = $props();
 
 	let gif = getRandomGIF(success);
@@ -34,7 +34,15 @@
 		/>
 
 		<Button3d
-		onclick={goToUebung}
+		onclick={()=> {
+			if(success) {
+				goToUebung();
+			}
+			else {
+				onclick();
+			}
+		}
+		}
 		bgFront="bg-amber-500"
 		bgBack="bg-amber-700"
 		onmouseup={() => {}}

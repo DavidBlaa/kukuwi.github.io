@@ -12,6 +12,7 @@
 	import GIF from '$lib/components/GIF.svelte';
 	import { goto } from '$app/navigation';
 	import { patternQuizLevels } from '$lib/data/patternQuizLevels';
+	import Button3d from '$lib/components/Button3d.svelte';
 
     let level = 0;
 	let patternQuizLevel = patternQuizLevels[level];
@@ -183,27 +184,30 @@
 
 				/>
 			</div>
-			<button class="
-            flex
-            flex-col
-            mt-3
-						h-fit
-						w-10/12
-            justify-center
-            bg-amber-500
-            rounded-lg
-            cursor-pointer
-            select-none
-            active:translate-y-2  active:[box-shadow:0_0px_0_0_#1b6ff8,0_0px_0_0_#1b70f841]
-            active:border-b-[0px]
-            transition-all duration-150 [box-shadow:0_8px_0_0_#cf860a,0_13px_0_0_#1b70f841]
-            border-[1px]
-            p-3
-            text-3xl
-        "
-				onmousedown={() => handleGuessButtonClick()}
-			>Raten
-			</button>
+			<Button3d 
+    bgFront="bg-amber-500"
+    bgBack="bg-amber-700"
+    class="
+        flex
+        flex-col
+        mt-5
+        h-fit
+        w-10/12
+        justify-center
+        rounded-lg
+        cursor-pointer
+        select-none
+        active:translate-y-2  active:[box-shadow:0_0px_0_0_#1b6ff8,0_0px_0_0_#1b70f841]
+        active:border-b-[0px]
+        transition-all duration-150 [box-shadow:0_8px_0_0_#cf860a,0_13px_0_0_#1b70f841]
+        border-[1px]
+    "
+    onmousedown={() => handleGuessButtonClick()}
+>
+    <span class="flex justify-center items-center w-full h-full text-3xl p-3 rounded-lg">
+        Raten
+    </span>
+</Button3d>
 		</div>
 	</div>
 	{#if game_ended}
