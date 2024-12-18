@@ -2,19 +2,23 @@
 	import { getRandomGIF } from '$lib/utils/helperfunctions';
 	import { base } from '$app/paths';
 
-	interface component_prop_type {
+	interface ComponentProps {
 		success: boolean;
 		onclick: () => void;
-		gif_sound_pause?: boolean;
+		GIFButtonTextSuccess: string;
+		GIFButtonTextFailure: string;
+		gifSoundPaused?: boolean;
 		volume: number;
 	}
 
 	let {
 		success = $bindable(true),
 		onclick,
-		gif_sound_pause = $bindable(true),
-		volume = $bindable(0.5)
-	}: component_prop_type = $props();
+		GIFButtonTextSuccess,
+		GIFButtonTextFailure,
+		gifSoundPaused = $bindable(true),
+		volume
+	}: ComponentProps = $props();
 
 	let gif = getRandomGIF(success);
 
@@ -54,11 +58,11 @@
 					"
 			{onclick}
 		>
-			{success ? 'RICHTIG :)' : ' leider falsch :('}
+			{success ? 'RICHTIG :)' : 'FALSCH :('}
 			<br />
-			{success ? 'weiter' : 'nochmal?'}
+			{success ? GIFButtonTextSuccess : GIFButtonTextFailure}
 		</button>
-		<audio src={sound} bind:paused={gif_sound_pause} bind:volume></audio>
+		<audio src={sound} bind:paused={gifSoundPaused} {volume}></audio>
 	</div>
 	<div
 		class="z-15 fixed bottom-0 top-0 flex h-screen w-screen flex-col items-center justify-center bg-gray-500 opacity-80"

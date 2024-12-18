@@ -60,15 +60,13 @@ export function getRandomGIF(correctAnswer: boolean) {
 	return gifs[Math.floor(Math.random() * gifs.length)];
 }
 
-
 export function getRandomIndex(list: Array<any>) {
 	if (list != undefined) {
-		return parseInt('' + Math.random() * (list.length));
+		return parseInt('' + Math.random() * list.length);
 	}
 
 	return -1;
 }
-
 
 export function getRandomSubset(list: Array<any>, count: number): Array<any> {
 	const indexList: number[] = [];
@@ -80,7 +78,6 @@ export function getRandomSubset(list: Array<any>, count: number): Array<any> {
 			indexList.push(i);
 			tmp.push(list[i]);
 		}
-
 	} while (tmp.length < count);
 
 	return tmp;

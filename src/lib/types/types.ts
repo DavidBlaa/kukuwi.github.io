@@ -26,16 +26,25 @@ export type KlangQuizLevel = {
 	sameCategory: boolean;
 };
 
+export type PatternLevel = {
+	difficulty: string;
+	rows: number;
+};
+
+export type GameRound = {
+	game: 'klangQuiz' | 'pattern';
+	difficulty: number;
+};
 
 export type pattern_type = {
 	midi_src: string;
 	audio_src: string;
-	instrument_type: "drum" | "Bass" | "Piano";
-	n_instruments: number
-}
+	instrument_type: 'drum' | 'Bass' | 'Piano';
+	n_instruments: number;
+};
 
 export type Highscore_type = {
-	name: string
-	points: number
-	highlight:boolean
-}
+	name: string;
+	points: number;
+	highlight: boolean;
+};

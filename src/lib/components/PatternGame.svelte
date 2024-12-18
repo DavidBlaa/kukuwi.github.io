@@ -1,0 +1,193 @@
+<script lang="ts">
+	import { onMount } from 'svelte';
+	import * as midiManager from 'midi-file';
+	import { base } from '$app/paths';
+	import Pattern from '$lib/components/Pattern.svelte';
+	import { pattern_list } from '$lib/data/pattern';
+	import { getRandomIndex, getRandomSubset } from '$lib/utils/helperfunctions';
+	import type { pattern_type } from '$lib/types/types';
+	import MusicControl from '$lib/components/MusicControl.svelte';
+	import GIF from '$lib/components/GIF.svelte';
+	import { patternLevels } from '$lib/data/patternLevels';
+
+	let {
+		difficulty,
+		handleNextRound,
+		GIFButtonTextSuccess,
+		GIFButtonTextFailure,
+		volume
+	}: {
+		difficulty: number;
+		handleNextRound: (roundScore: number) => void;
+		GIFButtonTextSuccess: string;
+		GIFButtonTextFailure: string;
+		volume: number;
+	} = $props();
+
+	const allPatterns: Array<{ pattern: boolean[]; selected: boolean; index: number }> = $state([]);
+	let correctIndex: number = $state(0);
+	let selectedIndex: number = $state(-1);
+	let loaded: boolean = $state(false);
+	let soundPath: string = $state('4_Rock 2.wav');
+	let roundEnded: boolean = $state(false);
+	let trackPaused = $state(true);
+	let soundEffectPaused: boolean = $state(false);
+	let roundWon: boolean = $state(false);
+
+	let time: number = $state(0);
+	let timeRunning: boolean = $state(true);
+	let tries: number = $state(0);
+	let repeats: number = $state(0);
+
+	const loadMidiFile = async (midi_path: string, index: number) => {
+		const response = await fetch(base + '/midis/' + midi_path);
+		const arrayBuffer = await response.arrayBuffer();
+		const uintArr = new Uint8Array(arrayBuffer);
+		const parsed = midiManager.parseMidi(uintArr);
+		const tickDelta: number = 24;
+		const events: { [key: number]: number[] } = {};
+		const patterns: boolean[] = [];
+		let timeDelta: number = 0;
+
+		for (const event of parsed.tracks[0]) {
+			timeDelta += event.deltaTime;
+			if (event.type === 'noteOn') {
+				if (!(event.noteNumber in events)) {
+					events[event.noteNumber] = [];
+				}
+				events[event.noteNumber].push(timeDelta);
+			}
+		}
+
+		for (const [, value] of Object.entries(events)) {
+			for (let t: number = 0; t < 16; t++) {
+				patterns.push(value.includes(t * tickDelta));
+			}
+		}
+
+		allPatterns.push({ pattern: patterns, selected: false, index: index });
+	};
+
+	onMount(() => {
+		const instrument = 'drum'; // TODO: Choose dynamicly if other instruments are added
+		const rows = patternLevels[difficulty - 1].rows;
+
+		const selectedPatterns: pattern_type[] = getRandomSubset(
+			pattern_list.filter((p) => p.instrument_type === instrument && p.n_instruments === rows),
+			3
+		);
+
+		correctIndex = getRandomIndex(selectedPatterns);
+
+		soundPath = selectedPatterns[correctIndex].audio_src;
+
+		for (const [index, p] of selectedPatterns.entries()) {
+			loadMidiFile(p.midi_src, index);
+		}
+
+		loaded = true;
+		start();
+
+		trackPaused = false;
+		repeats++;
+	});
+
+	function handlePatternClick(index: number) {
+		if (selectedIndex == index) {
+			return;
+		} else {
+			selectedIndex = index;
+		}
+		allPatterns.forEach((p) => {
+			p.selected = p.index === index;
+		});
+	}
+
+	function handleGuessButtonClick() {
+		roundWon = correctIndex === selectedIndex;
+		timeRunning = false;
+		trackPaused = true;
+		roundEnded = true;
+		soundEffectPaused = false;
+	}
+
+	function handleGIFButtonClick(): void {
+		const roundScore = roundWon ? 1000 : 0; // TODO: Implement score calculate function
+		handleNextRound(roundScore);
+		roundEnded = false;
+	}
+
+	function start() {
+		setInterval(() => {
+			if (timeRunning) {
+				time++;
+			}
+		}, 1000);
+	}
+</script>
+
+<div class="flex h-full w-full flex-col items-center justify-center bg-blue-300">
+	<div
+		class="bg-s h-11/12 border-12 ml-2 flex w-11/12 flex-row justify-evenly rounded-2xl border-8 bg-gray-600 p-5"
+	>
+		<div class="flex basis-9/12 flex-col items-center justify-evenly">
+			{#if loaded}
+				{#each allPatterns as p}
+					<div class="h-full w-full basis-1/6">
+						<Pattern
+							pattern_array={p.pattern}
+							bind:active={p.selected}
+							onmouseup={() => handlePatternClick(p.index)}
+						/>
+					</div>
+				{/each}
+			{/if}
+		</div>
+		<div class="flex basis-1/6 flex-col items-center">
+			<div class="h-5/6">
+				<MusicControl
+					bind:trackPaused
+					{repeats}
+					{time}
+					trackSource={base + '/audios/pattern_sounds/' + soundPath}
+					{tries}
+					{volume}
+				/>
+			</div>
+			<button
+				class="
+            		mt-3
+            		flex
+           			h-fit
+					w-10/12
+					cursor-pointer
+					select-none
+					flex-col
+					justify-center
+					rounded-lg
+					border-[1px]
+					bg-amber-500 p-3
+					text-3xl
+					transition-all duration-150 [box-shadow:0_8px_0_0_#cf860a,0_13px_0_0_#1b70f841]
+					active:translate-y-2
+					active:border-b-[0px]
+					active:[box-shadow:0_0px_0_0_#1b6ff8,0_0px_0_0_#1b70f841]
+				"
+				onmousedown={() => handleGuessButtonClick()}
+				>Raten
+			</button>
+		</div>
+	</div>
+	{#if roundEnded}
+		<div class="absolute left-0 top-0">
+			<GIF
+				bind:success={roundWon}
+				onclick={handleGIFButtonClick}
+				{GIFButtonTextSuccess}
+				{GIFButtonTextFailure}
+				bind:gifSoundPaused={soundEffectPaused}
+				{volume}
+			/>
+		</div>
+	{/if}
+</div>
