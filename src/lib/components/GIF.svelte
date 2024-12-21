@@ -1,22 +1,25 @@
 <script lang="ts">
 	import { getRandomGIF } from '$lib/utils/helperfunctions';
 	import { base } from '$app/paths';
-	import { goToUebung } from '$lib/utils/helperfunctions';
 	import Button3d from './Button3d.svelte';
 
-	interface component_prop_type {
+	interface ComponentProps {
 		success: boolean;
 		onclick: () => void;
-		gif_sound_pause?: boolean;
+		GIFButtonTextSuccess: string;
+		GIFButtonTextFailure: string;
+		gifSoundPaused?: boolean;
 		volume: number;
 	}
 
 	let {
 		success = $bindable(true),
 		onclick,
-		gif_sound_pause = $bindable(true),
-		volume = $bindable(0.5),
-	}: component_prop_type = $props();
+		GIFButtonTextSuccess,
+		GIFButtonTextFailure,
+		gifSoundPaused = $bindable(true),
+		volume
+	}: ComponentProps = $props();
 
 	let gif = getRandomGIF(success);
 
@@ -34,45 +37,18 @@
 		/>
 
 		<Button3d
-		onclick={()=> {
-			if(success) {
-				goToUebung();
-			}
-			else {
-				onclick();
-			}
-		}
-		}
-		bgFront="bg-amber-500"
-		bgBack="bg-amber-700"
-		onmouseup={() => {}}
+			{onclick}
+			bgFront="bg-amber-500"
+			bgBack="bg-amber-700"
+			onmouseup={() => {}}
+			style="mt-3 flex flex-col justify-center text-3xl font-extrabold"
+			padding="px-7 py-2"
 		>
-		<span class="
-							mt-3
-							flex
-							h-1/6
-							w-fit
-							cursor-pointer
-							select-none
-							flex-col
-							justify-center
-							rounded-lg
-							border-[1px] bg-amber-500
-							px-7
-							py-2 text-3xl font-extrabold
-							transition-all
-							duration-150
-							[box-shadow:0_8px_0_0_#d1870a,0_13px_0_0_#1b70f841]
-							active:translate-y-2
-							active:border-b-[0px]
-							active:[box-shadow:0_0px_0_0_#d1870a,0_0px_0_0_#1b70f841]
-					">
-			{success ? 'RICHTIG :)' : ' leider falsch :('}
+			{success ? 'RICHTIG :)' : 'FALSCH :('}
 			<br />
-			{success ? 'weiter' : 'nochmal?'}
-		</span>
-	</Button3d>
-		<audio src={sound} bind:paused={gif_sound_pause} bind:volume></audio>
+			{success ? GIFButtonTextSuccess : GIFButtonTextFailure}
+		</Button3d>
+		<audio src={sound} bind:paused={gifSoundPaused} {volume}></audio>
 	</div>
 	<div
 		class="z-15 fixed bottom-0 top-0 flex h-screen w-screen flex-col items-center justify-center bg-gray-500 opacity-80"

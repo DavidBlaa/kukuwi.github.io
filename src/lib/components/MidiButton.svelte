@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Icon from '$lib/components/Icon.svelte';
+	import Icon from '$lib/components/Icon.svelte';
 	import Button3d from './Button3d.svelte';
 	interface ComponentProps {
 		img_url: string;
@@ -34,7 +34,7 @@
 		use_header = true,
 		volume = 0.5
 	}: ComponentProps = $props();
-    
+
 	export function handle_music_tile_click(end_of_song: boolean = false): void {
 		is_active = !is_active;
 
@@ -58,19 +58,10 @@
 		{onmouseup}
 		bgFront={is_active ? active_color_top : passiv_color_top}
 		bgBack={is_active ? active_color_bottom : passiv_color_bottom}
-		class="flex h-full flex-col items-center justify-center {is_active
-			? active_color_top
-			: passiv_color_top} order-[1px] cursor-pointer select-none
-    rounded-lg transition-all
-    duration-150 active:translate-y-2
-    active:border-b-[0px] active:[box-shadow:0_0px_0_0_#1b6ff8,0_0px_0_0_#1b70f841] {is_active
-			? active_color_bottom
-			: passiv_color_bottom}
-    border-b-[1px] border-white"
 	>
-	<Icon src={img_url} className=""/>
+		<Icon src={img_url} className="" />
 		{#if use_audio}
-			<audio src={audio_url} bind:paused bind:volume onended={() => handle_music_tile_click(true)}
+			<audio src={audio_url} bind:paused {volume} onended={() => handle_music_tile_click(true)}
 			></audio>
 		{/if}
 	</Button3d>

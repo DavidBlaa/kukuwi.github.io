@@ -1,81 +1,81 @@
 <script lang="ts">
-    import { goto } from "$app/navigation";
-    import { base } from '$app/paths';
-    import Button3d from '$lib/components/Button3d.svelte';
-    import MenuCard from "$lib/components/MenuCard.svelte";
-    import { goToStart } from "$lib/utils/helperfunctions";
+	import { goto } from '$app/navigation';
+	import { base } from '$app/paths';
+	import Button3d from '$lib/components/Button3d.svelte';
+	import { klangQuizLevels } from '$lib/data/klangQuizLevels';
+	import { patternLevels } from '$lib/data/patternLevels';
+	import { genreLevels } from '$lib/data/genreLevels';
 
-    const levels = [
-        { text: 'Level 1', bgFront: 'bg-green-500', bgBack: 'bg-green-600' },
-        { text: 'Level 2', bgFront: 'bg-yellow-500', bgBack: 'bg-yellow-600' },
-        { text: 'Level 3', bgFront: 'bg-red-500', bgBack: 'bg-red-600' }
-    ];
+	const colors = [
+		{ difficulty: 'einfach', bgFront: 'bg-green-500', bgBack: 'bg-green-600' },
+		{ difficulty: 'mittel', bgFront: 'bg-yellow-500', bgBack: 'bg-yellow-600' },
+		{ difficulty: 'schwer', bgFront: 'bg-red-500', bgBack: 'bg-red-600' }
+	];
 
-    const ueberschriften = [
-        { text: 'Ratespiel', textColor: 'text-kukuwi-red', path: 'ratespiel' }, 
-        { text: 'Pattern', textColor: 'text-kukuwi-yellow', path: 'pattern' }, 
-        { text: 'Genre', textColor: 'text-kukuwi-blue', path: 'genre' }
-    ];
+	const games = [
+		{
+			title: 'Ratespiel',
+			textColor: 'text-kukuwi-red',
+			path: 'Quiz-Game',
+			levels: klangQuizLevels
+		},
+		{
+			title: 'Pattern',
+			textColor: 'text-kukuwi-yellow',
+			path: 'Pattern-Game',
+			levels: patternLevels
+		},
+		{ title: 'Genre', textColor: 'text-kukuwi-blue', path: 'Genre-Game', levels: genreLevels }
+	];
 
-    function handleLevelClick(ueberschrift: string, level: string) {
-        const uebungPath = ueberschriften.find(u => u.text === ueberschrift)?.path;
-        if (uebungPath) {
-            let instrument = 'drum'; 
-            let rows = '2'; 
+	function handleLevelClick(path: string, difficulty: number) {
+		goto(`${base}/${path}?difficulty=${difficulty}`);
+	}
 
-            if (ueberschrift === 'Ratespiel') {
-                instrument = 'drum';
-                rows = level === 'Level 1' ? '2' : level === 'Level 2' ? '3' : '4';
-            } else if (ueberschrift === 'Pattern') {
-                instrument = 'drum';
-                rows = level === 'Level 1' ? '2' : level === 'Level 2' ? '3' : '4';
-            }
+	function getLevelColorFront(difficulty: string) {
+		return colors.find((color) => color.difficulty === difficulty)!.bgFront;
+	}
 
-            goto(`${base}/uebung/${uebungPath}/${level}?instrument=${instrument}&rows=${rows}`);
-        }
-    }
+	function getLevelColorBack(difficulty: string) {
+		return colors.find((color) => color.difficulty === difficulty)!.bgBack;
+	}
 </script>
 
-<main class="h-screen overflow-hidden">
-    <div class="grid grid-cols-3 gap-2 h-full" style="grid-template-rows: repeat(5, 1fr);">
-        {#each ueberschriften as ueberschrift, i}
-            <div class="flex flex-col items-center h-full">
-                <div class={`flex justify-center items-center text-7xl font-bold ${ueberschrift.textColor} h-1/6`}>
-                    {ueberschrift.text}
-                </div>
+<main class="flex h-screen flex-col overflow-hidden">
+	<div class="grid h-4/5 grid-cols-3 gap-2 pt-12">
+		{#each games as game}
+			<div class="flex h-full flex-col items-center gap-8">
+				<h1 class={`flex items-center justify-center text-7xl font-bold ${game.textColor} h-1/6`}>
+					{game.title}
+				</h1>
 
-                <div class="grid gap-1 h-5/6 w-full" style="grid-template-rows: repeat(5, 1fr);">
-                    {#each levels as level}
-                        <div class="flex justify-center items-center text-white font-bold text-5xl w-full h-full">
-                            <Button3d
-                                bgFront={level.bgFront}
-                                bgBack={level.bgBack}
-                                padding="px-1 py-1 md:px-2 md:py-2 lg:px-4 lg:py-4"
-                                onclick={() => handleLevelClick(ueberschrift.text, level.text)}
-                                onmouseup={() => {}}
-                                class="w-full h-full"
-                            >
-                                {level.text}
-                            </Button3d>
-                        </div>
-                    {/each}
-
-                    {#if ueberschrift.text === 'Pattern'}
-                        <div class="flex justify-center items-center text-white font-bold text-2xl w-full h-full">
-                            <MenuCard
-                                text="START"
-                                image={{ src: '/images/Pokal.png', alt: 'Pokal' }}
-                                bgFront="bg-kukuwi-blue"
-                                bgBack="bg-kukuwi-blue-dark"
-                                onclick={goToStart}
-                                class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32"
-                            />
-                        </div>
-                    {:else}
-                        <div class="w-full h-full"></div>
-                    {/if}
-                </div>
-            </div>
-        {/each}
-    </div>
+				<div class="grid h-5/6 w-full gap-8">
+					{#each game.levels as level, i}
+						<div
+							class="flex h-full w-full items-center justify-center text-5xl font-bold text-white"
+						>
+							<Button3d
+								bgFront={getLevelColorFront(level.difficulty)}
+								bgBack={getLevelColorBack(level.difficulty)}
+								padding="px-1 py-1 md:px-2 md:py-2 lg:px-8 lg:py-6"
+								onclick={() => handleLevelClick(game.path, i + 1)}
+								onmouseup={() => {}}
+							>
+								Level {i + 1}
+							</Button3d>
+						</div>
+					{/each}
+				</div>
+			</div>
+		{/each}
+	</div>
+	<Button3d
+		bgFront="bg-kukuwi-blue"
+		bgBack="bg-kukuwi-blue-dark"
+		padding="px-8 py-2"
+		onclick={() => goto(`${base}/`)}
+		onmouseup={() => {}}
+	>
+		Zurück
+	</Button3d>
 </main>

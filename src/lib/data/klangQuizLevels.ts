@@ -8,16 +8,11 @@ export const klangQuizLevels: KlangQuizLevel[] = [
 	},
 	{
 		difficulty: 'mittel',
-		instruments: 6,
-		sameCategory: false
-	},
-	{
-		difficulty: 'schwer',
 		instruments: 8,
 		sameCategory: false
 	},
 	{ 
-		difficulty: 'sehr schwer',
+		difficulty: 'schwer',
 		instruments: 3,
 		sameCategory: true
 	}
