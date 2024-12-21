@@ -17,7 +17,7 @@
 			title: 'Ratespiel',
 			textColor: 'text-kukuwi-red',
 			path: 'Quiz-Game',
-			levels: klangQuizLevels
+			levels: klangQuizLevels.slice(0, 3)
 		},
 		{
 			title: 'Pattern',

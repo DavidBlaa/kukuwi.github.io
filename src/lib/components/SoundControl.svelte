@@ -49,10 +49,10 @@
 		bgBack="bg-amber-700"
 		onmouseup={() => {}}
 		onclick={() => handleVolumeButtons(true)}
-		style="flex items-center justify-center rounded-full size-16 text-white text-6xl font-bold leading-none mb-3"
-		padding="size-16 rounded-full"
+		style="rounded-full size-16 mb-3"
+		padding="relative size-16 rounded-full"
 	>
-		+
+		<p class="absolute inset-x-0 bottom-2 text-6xl font-bold text-white">+</p>
 	</Button3d>
 
 	<Button3d
@@ -60,9 +60,9 @@
 		bgBack="bg-amber-700"
 		onmouseup={() => {}}
 		onclick={() => handleVolumeButtons(false)}
-		style="flex items-center justify-center rounded-full size-16 text-white text-6xl font-bold leading-none"
-		padding="size-16 rounded-full"
+		style="rounded-full size-16 mb-3"
+		padding="relative size-16 rounded-full"
 	>
-		-
+		<p class="absolute inset-x-0 bottom-2 text-6xl font-bold text-white">-</p>
 	</Button3d>
 </div>
