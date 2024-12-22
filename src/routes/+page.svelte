@@ -19,8 +19,6 @@
 					bgFront="bg-kukuwi-red"
 					bgBack="bg-kukuwi-red-dark"
 					onclick={() => goto(`${base}/uebung`)}
-					class="h-48 w-48 sm:h-56 sm:w-56 md:h-64 md:w-64 lg:h-72 lg:w-72 xl:h-80 xl:w-80"
-					textClass="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-8xl"
 				/>
 			</div>
 			<div class="flex w-1/2 justify-center">
@@ -30,8 +28,6 @@
 					bgFront="bg-kukuwi-blue"
 					bgBack="bg-kukuwi-blue-dark"
 					onclick={() => goto(`${base}/raten`)}
-					class="h-48 w-48 sm:h-56 sm:w-56 md:h-64 md:w-64 lg:h-72 lg:w-72 xl:h-80 xl:w-80"
-					textClass="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-8xl"
 				/>
 			</div>
 		</div>
