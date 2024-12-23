@@ -7,7 +7,7 @@
 		image: { src: string; alt: string };
 		bgFront: string;
 		bgBack: string;
-		onclick: (this: Window, ev: MouseEvent) => any;
+		onclick: () => void;
 	};
 
 	let { text, image, bgFront, bgBack, onclick }: MenuCardProps = $props();
@@ -17,10 +17,10 @@
 	{bgFront}
 	{bgBack}
 	{onclick}
-	style="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56"
+	style="flex flex-col items-center justify-center w-40 sm:w-52 md:w-56 lg:w-64 xl:w-80"
+	padding="p-4"
+	translateY="translate-y-[-0.7rem]"
 >
-	<div class={`flex flex-col items-center justify-center`}>
-		<img src={base + image.src} alt={image.alt} class="object contain w-full" />
-		<p class={`mt-1 text-center text-4xl font-extrabold text-white`}>{text}</p>
-	</div>
+	<img src={base + image.src} alt={image.alt} class="w-full" />
+	<p class="mt-1 text-center text-4xl font-extrabold text-white">{text}</p>
 </Button3d>
