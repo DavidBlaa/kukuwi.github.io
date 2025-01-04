@@ -53,3 +53,8 @@ export type GenreLevel = {
 	difficulty: string;
 	pairs: number;
 };
+
+export type MemoryCard = {
+	genre: string;
+	audioPaths:string[]
+}
