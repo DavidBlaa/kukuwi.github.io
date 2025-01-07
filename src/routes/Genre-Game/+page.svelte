@@ -8,7 +8,7 @@
 	import { getRandomIndex, getRandomSubset } from '$lib/utils/helperfunctions.js';
 	import GIF from '$lib/components/GIF.svelte';
 	import { goto } from '$app/navigation';
-
+	import { base } from '$app/paths';
 
 	let cards: {
 		genre: string;
@@ -30,7 +30,7 @@
 
 	function handleGIFButtonClick() {
 
-		goto("/");
+		goto(base+"/");
 
 	}
 
