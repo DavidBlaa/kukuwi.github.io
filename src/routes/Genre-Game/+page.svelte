@@ -30,7 +30,7 @@
 
 	function handleGIFButtonClick() {
 
-		goto(base+"/");
+		goto(base + '/');
 
 	}
 
