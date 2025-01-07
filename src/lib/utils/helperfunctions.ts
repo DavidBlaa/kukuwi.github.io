@@ -42,7 +42,7 @@ function getInstrumentCategories(instruments: Instrument[]) {
 	return Array.from(categoryMap, ([name, count]) => ({ name, count }));
 }
 
-function shuffleArray<T>(array: T[]): T[] {
+export function shuffleArray<T>(array: T[]): T[] {
 	for (let i = array.length; i > 0; i--) {
 		const j = Math.floor(Math.random() * i);
 		[array[i - 1], array[j]] = [array[j], array[i - 1]];
