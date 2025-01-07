@@ -67,7 +67,7 @@
 	});
 
 
-	function handleCLick(index: number): void {
+	function handleClick(index: number): void {
 
 		if (cards[index].finished) {
 			return;
@@ -105,7 +105,7 @@
 				cards[index].finished = true;
 				cards[lastID].finished = true;
 				n_cards -= 2;
-				console.log(n_cards)
+
 
 			}
 
@@ -134,7 +134,7 @@
 
 				isRotated={c.isRotated}
 				paused={c.paused}
-				onmouseup={() => handleCLick(c.index)}
+				onmouseup={() => handleClick(c.index)}
 				audioSource={"/audios/"+c.audioPath}
 				finished={c.finished}
 
