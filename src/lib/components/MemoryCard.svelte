@@ -30,6 +30,7 @@
 	<button
 		class="flex cursor-pointer flex-col items-center justify-center w-[200px] h-[200px] perspective-1000"
 		onmouseup={onmouseup}
+		disabled={finished}
 	>
 		<!-- 3D Container -->
 		<div
