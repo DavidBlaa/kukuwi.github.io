@@ -1,4 +1,4 @@
-import"../chunks/disclose-version.Bg9kRutz.js";import{g,d as y,c as l,r as u,s as L,b as h,p as x,a as S}from"../chunks/runtime.BF1lsdxA.js";import{a as p,t as f}from"../chunks/template.sUr9O-vt.js";import{b as k,p as c}from"../chunks/props.BJTZrMLw.js";import{i as b}from"../chunks/instruments.eDtd4H-P.js";import{i as w}from"../chunks/if.B6rBiUnJ.js";import{M as A,S as B}from"../chunks/MidiBoardGrid.37l5eTLb.js";var M=f('<div class="basis-1/12"><!></div>'),j=f(`<div class="
+import"../chunks/disclose-version.Bg9kRutz.js";import{g,d as y,c as l,r as u,s as L,b as h,p as x,a as S}from"../chunks/runtime.BF1lsdxA.js";import{a as p,t as f}from"../chunks/template.sUr9O-vt.js";import{b as k,p as c}from"../chunks/props.BJTZrMLw.js";import{i as b}from"../chunks/instruments.eDtd4H-P.js";import{i as w}from"../chunks/if.B6rBiUnJ.js";import{M as A,S as B}from"../chunks/MidiBoardGrid.Cjri-HSY.js";var M=f('<div class="basis-1/12"><!></div>'),j=f(`<div class="
             flex
             h-full
             w-full
