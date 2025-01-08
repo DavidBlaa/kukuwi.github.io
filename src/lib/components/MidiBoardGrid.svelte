@@ -2,6 +2,7 @@
 	import MidiButton from '$lib/components/MidiButton.svelte';
 	import type { Instrument, KlangQuizInstrument } from '$lib/types/types';
 	import { base } from '$app/paths';
+	import ResetButton from './ResetButton.svelte';
 
 	interface ComponentProps {
 		volume: number;
@@ -53,4 +54,8 @@
 			{volume}
 		/>
 	{/each}
+</div>
+
+<div class="absolute left-6 top-0 m-3 mt-10">
+	<ResetButton></ResetButton>
 </div>
