@@ -34,8 +34,8 @@
 	}
 </script>
 
-<div class="flex h-full w-full flex-col items-center justify-end">
-	<div class="mb-5 flex h-full w-4/6 flex-col-reverse justify-center rounded-2xl lg:w-1/3">
+<div class="flex h-full w-24 flex-none flex-col items-center justify-end">
+	<div class="mb-7 flex h-full w-4/6 flex-col-reverse justify-center rounded-2xl lg:w-1/3">
 		{#each soundLevelList as s}
 			<div
 				class="{s
@@ -49,10 +49,10 @@
 		bgBack="bg-amber-700"
 		onmouseup={() => {}}
 		onclick={() => handleVolumeButtons(true)}
-		style="rounded-full size-16 mb-3"
-		padding="relative size-16 rounded-full"
+		style="rounded-full size-[4.5rem] mb-5"
+		padding="relative size-[4.5rem] rounded-full"
 	>
-		<p class="absolute inset-x-0 bottom-2 text-6xl font-bold text-white">+</p>
+		<p class="absolute inset-x-0 bottom-2 text-7xl font-bold text-white">+</p>
 	</Button3d>
 
 	<Button3d
@@ -60,9 +60,9 @@
 		bgBack="bg-amber-700"
 		onmouseup={() => {}}
 		onclick={() => handleVolumeButtons(false)}
-		style="rounded-full size-16 mb-3"
-		padding="relative size-16 rounded-full"
+		style="rounded-full size-[4.5rem] mb-3"
+		padding="relative size-[4.5rem] rounded-full"
 	>
-		<p class="absolute inset-x-0 bottom-2 text-6xl font-bold text-white">-</p>
+		<p class="absolute inset-x-0 bottom-2 text-7xl font-bold text-white">-</p>
 	</Button3d>
 </div>
