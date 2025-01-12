@@ -5,6 +5,7 @@
 	import { klangQuizLevels } from '$lib/data/klangQuizLevels';
 	import { patternLevels } from '$lib/data/patternLevels';
 	import { genreLevels } from '$lib/data/genreLevels';
+	import BackButton from '$lib/components/BackButton.svelte';
 
 	const colors = [
 		{ difficulty: 'einfach', bgFront: 'bg-green-500', bgBack: 'bg-green-600' },
@@ -69,13 +70,7 @@
 			</div>
 		{/each}
 	</div>
-	<Button3d
-		bgFront="bg-kukuwi-blue"
-		bgBack="bg-kukuwi-blue-dark"
-		padding="px-8 py-2"
-		onclick={() => goto(`${base}/`)}
-		onmouseup={() => {}}
-	>
-		Zurück
-	</Button3d>
+	<div class="flex w-auto justify-center">
+		<BackButton></BackButton>
+	</div>
 </main>

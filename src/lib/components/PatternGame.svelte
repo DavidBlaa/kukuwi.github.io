@@ -10,6 +10,7 @@
 	import GIF from '$lib/components/GIF.svelte';
 	import { patternLevels } from '$lib/data/patternLevels';
 	import Button3d from './Button3d.svelte';
+	import ResetButton from './ResetButton.svelte';
 
 	let {
 		difficulty,
@@ -176,4 +177,7 @@
 			/>
 		</div>
 	{/if}
+</div>
+<div class="absolute left-3 top-0 m-2 mt-4">
+	<ResetButton></ResetButton>
 </div>
