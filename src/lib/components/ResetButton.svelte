@@ -10,7 +10,7 @@
 	padding="p-2"
 	onclick={() => goto(`${base}/`)}
 	onmouseup={() => {}}
-	style="w-24 text-white font-bold"
+	style="w-16 h-16 text-white text-3xl font-bold"
 >
-	Abbruch
+	X
 </Button3d>
