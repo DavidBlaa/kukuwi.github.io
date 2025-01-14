@@ -22,10 +22,12 @@
 	}: ComponentProps = $props();
 </script>
 
-<div class={`flex h-[90%] flex-wrap self-center p-3 ${instruments.length > 4 ? '' : 'w-[46%]'}`}>
+<div
+	class={`flex h-full flex-wrap self-center p-1 lg:p-3 2xl:h-[90%] ${instruments.length > 4 ? 'w-[72%] lg:w-full' : 'w-[44%] lg:w-[46%]'}`}
+>
 	{#each instruments as instrument, index}
 		<div
-			class={`flex max-h-[50%] flex-col items-center justify-center ${instruments.length > 4 ? 'basis-1/4 px-8' : 'basis-1/2 px-16'}`}
+			class={`flex max-h-[50%] flex-col items-center justify-center ${instruments.length > 4 ? 'basis-1/4 px-2 lg:px-5 2xl:px-8' : 'fhd:px-16 basis-1/2 px-4 lg:px-8'}`}
 		>
 			<MidiButton
 				img_url={base + '/icons/instruments/' + instrument.image}

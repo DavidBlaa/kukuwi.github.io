@@ -48,7 +48,7 @@
 	<p
 		class="w-fit px-1 text-xs lg:text-xl {is_active
 			? active_color_top
-			: passiv_color_top} mb-3 rounded-sm font-bold"
+			: passiv_color_top} mb-2 rounded-sm font-bold lg:mb-3"
 	>
 		{name}
 	</p>
@@ -59,7 +59,7 @@
 	bgBack={is_active ? active_color_bottom : passiv_color_bottom}
 	style="flex w-full"
 	padding="w-full"
-	translateY="translate-y-[-0.7rem]"
+	translateY="lg:translate-y-[-0.7rem] translate-y-[-0.4rem]"
 >
 	<Icon src={img_url} className="w-full" />
 	{#if use_audio}

@@ -79,7 +79,7 @@
 
 {#if usedInstruments}
 	<div
-		class="flex size-full justify-between gap-4 rounded-2xl border-x-[10px] border-b-[20px] border-t-[10px] border-b-gray-600 border-l-gray-200 border-r-gray-400 border-t-gray-400 bg-[#d1d5db] p-3 shadow-2xl lg:p-10"
+		class="flex size-full justify-between gap-4 rounded-2xl border-x-[7px] border-b-[14px] border-t-[7px] border-b-gray-600 border-l-gray-200 border-r-gray-400 border-t-gray-400 bg-[#d1d5db] p-3 shadow-2xl lg:border-x-[10px] lg:border-b-[20px] lg:border-t-[10px] lg:p-10"
 	>
 		<MusicControl {time} {trackSource} {volume} bind:trackPaused {tries} {repeats} />
 		<MidiBoardGrid
