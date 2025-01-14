@@ -52,7 +52,7 @@
 		onmouseup={() => {}}
 		onclick={() => handleVolumeButtons(true)}
 		style="rounded-full size-[2rem] lg:size-[2.7rem] lg:mb-2 2xl:size-[4.5rem] mb-2 2xl:mb-5"
-		translateY="translate-y-[-0.25rem]"
+		translateY="translate-y-[-0.25rem] 2xl:translate-y-[-0.375rem]"
 		padding="relative size-[2rem] lg:size-[2.7rem] 2xl:size-[4.5rem] rounded-full"
 	>
 		<p
@@ -68,7 +68,7 @@
 		onmouseup={() => {}}
 		onclick={() => handleVolumeButtons(false)}
 		style="rounded-full size-[2rem] lg:size-[2.7rem] lg:mb-2 2xl:size-[4.5rem] mb-2 2xl:mb-5"
-		translateY="translate-y-[-0.25rem]"
+		translateY="translate-y-[-0.25rem] 2xl:translate-y-[-0.375rem]"
 		padding="relative size-[2rem] lg:size-[2.7rem] 2xl:size-[4.5rem] rounded-full"
 	>
 		<p

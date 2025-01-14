@@ -68,7 +68,7 @@
 		bgBack="bg-kukuwi-blue-dark"
 		padding="px-4 wqhd:px-8 py-2"
 		style="mt-3"
-		translateY="translate-y-[-0.3rem]"
+		translateY="translate-y-[-0.3rem] 2xl:translate-y-[-0.5rem]"
 		onclick={() => handlePlayButton()}
 	>
 		<Icon
