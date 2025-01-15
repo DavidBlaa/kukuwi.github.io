@@ -11,7 +11,6 @@
 		useTileSounds: boolean;
 		instruments: KlangQuizInstrument[] | Instrument[];
 		onmouseup: (endOfSong: boolean, index: number) => void;
-		grid_layout?: string;
 	}
 
 	let {
@@ -20,39 +19,31 @@
 		pauseTileList,
 		useTileSounds,
 		instruments,
-		onmouseup,
-		grid_layout = 'grid-cols-4'
+		onmouseup
 	}: ComponentProps = $props();
 </script>
 
-<div
-	class="
-        grid
-        {grid_layout}
-        h-full
-        w-full
-        items-stretch
-        gap-5
-		p-3
-		lg:gap-x-12
-        lg:gap-y-20"
->
+<div class={`flex h-[90%] flex-wrap self-center p-3 ${instruments.length > 4 ? '' : 'w-[46%]'}`}>
 	{#each instruments as instrument, index}
-		<MidiButton
-			img_url={base + '/icons/instruments/' + instrument.image}
-			is_active={activeTileList[index]}
-			use_audio={useTileSounds}
-			audio_url={useTileSounds
-				? 'audio' in instrument
-					? `${base}/audios/${instrument.audio}`
-					: `${base}/audios/${instrument.audios[0]}`
-				: ''}
-			name={instrument.name}
-			use_header={true}
-			paused={pauseTileList[index]}
-			onmouseup={() => onmouseup(false, index)}
-			{volume}
-		/>
+		<div
+			class={`flex max-h-[50%] flex-col items-center justify-center ${instruments.length > 4 ? 'basis-1/4 px-8' : 'basis-1/2 px-16'}`}
+		>
+			<MidiButton
+				img_url={base + '/icons/instruments/' + instrument.image}
+				is_active={activeTileList[index]}
+				use_audio={useTileSounds}
+				audio_url={useTileSounds
+					? 'audio' in instrument
+						? `${base}/audios/${instrument.audio}`
+						: `${base}/audios/${instrument.audios[0]}`
+					: ''}
+				name={instrument.name}
+				use_header={true}
+				paused={pauseTileList[index]}
+				onmouseup={() => onmouseup(false, index)}
+				{volume}
+			/>
+		</div>
 	{/each}
 </div>
 
